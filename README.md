@@ -92,7 +92,7 @@ $ cd parek-framework
 $ ./scripts/setup.sh
 
 # Build the handbook as a single PDF
-$ ./scripts/build-pdf.sh
+$ ./scripts/build_pdf.sh
 # → output/parek-handbook.pdf
 
 # Serve as HTML (MkDocs)
