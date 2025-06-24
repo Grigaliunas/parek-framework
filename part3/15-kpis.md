@@ -1,4 +1,4 @@
-###15 KPIs & Reporting Dashboard" authors***
+# 15 KPIs & Reporting Dashboard" authors
 
 > **Purpose of this chapter** – define the key‑performance indicators (KPIs), data flows and reporting dashboards that quantify progress and operational health of the PAREK Programme.  Metrics are calibrated to EU supervisory expectations under **NIS 2**, **DORA** and the forthcoming **Cyber Resilience Act (CRA)**.
 

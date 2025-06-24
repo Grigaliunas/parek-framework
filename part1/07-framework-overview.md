@@ -1,4 +1,4 @@
-###  Framework Overview***
+# 7  Framework Overview
 
 > **Purpose of this chapter** – give readers a *one‑stop* visual and narrative tour of the PAREK Framework, explaining how its five stages interlock, what artefacts they exchange, and how the cycle repeats to deliver continuous crypto‑agility.
 

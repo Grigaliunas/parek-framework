@@ -1,4 +1,4 @@
-###  Supply‑Chain Integration***
+# 13 Supply‑Chain Integration
 
 > **Purpose of this chapter** – embed post‑quantum cryptography (PQC) requirements into the entire supplier life‑cycle so that every external component, cloud service and piece of hardware entering the organisation’s environment supports PAREK objectives and timelines.
 

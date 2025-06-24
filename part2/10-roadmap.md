@@ -1,4 +1,4 @@
-### R – Road‑mapping & Readiness Planning ***
+# 10 R – Road‑mapping & Readiness Planning
 
 > **Purpose of this chapter** – translate the quantitative urgency produced in *§9 Assessment of Quantum Risk* into a resourced, dated and regulator‑aligned action plan that will deliver quantum resilience across the organisation’s entire technology estate.
 

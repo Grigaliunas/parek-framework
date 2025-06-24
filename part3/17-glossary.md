@@ -1,4 +1,4 @@
-### 17  Glossary & Acronyms (CEN/CENELEC & ISO‑aligned)***
+# 17  Glossary & Acronyms (CEN/CENELEC & ISO‑aligned)
 
 
 > **Purpose** – harmonise terminology across the handbook and supplier communications.  Definitions derive, where possible, from authoritative European standards: **CEN/CENELEC Guide 30:2015** (*European Standardisation – Vocabulary*), **EN ISO/IEC 2382** (*Information technology – Vocabulary*) and **ETSI TR 103 684** (*Algorithm Agility and Post‑Quantum Cryptography*).  Where no official wording exists, the editorial team supplies a consensual definition.

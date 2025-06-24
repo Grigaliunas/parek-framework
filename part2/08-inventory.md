@@ -1,4 +1,4 @@
-### P – Post‑Quantum Asset & Algorithm Inventory***
+# 8 P – Post‑Quantum Asset & Algorithm Inventory
 
 
 > **Purpose** – provide a succinct overview of how to catalogue all cryptographic assets and algorithms so that subsequent risk scoring (Stage A) is based on complete, reliable data.  This short version is intended as a quick‑start guide; a full procedural manual will follow in v0.2.

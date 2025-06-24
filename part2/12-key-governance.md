@@ -1,4 +1,4 @@
-### K – Key‑Governance & Continuous Improvement***
+# 12 K – Key‑Governance & Continuous Improvement
 
 
 > **Purpose of this chapter** – define how EU‑based organisations maintain crypto‑agility, monitor post‑quantum cryptography (PQC) compliance, and sustain supplier accountability after initial migrations are complete.  Governance mechanisms align with **NIS 2**, **DORA**, **GDPR**, the forthcoming **EU Cyber Resilience Act (CRA)**, and ENISA good‑practice guidelines.

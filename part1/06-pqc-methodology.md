@@ -1,10 +1,10 @@
-## PQC Methodology**
+# 6 PQC Methodology
 
-### 6.1  Purpose and position of this chapter
+## 6.1  Purpose and position of this chapter
 
 This methodology bridges the “**why**” articulated in the quantum-threat literature with the practical “**how**” codified in the PAREK framework. It supplies a repeatable lifecycle—*discover → assess → plan → execute → improve*—that any EU organisation can embed in its security management system and map onto the milestones of the Coordinated Implementation Roadmap (first-steps 2026, high-risk cut-over 2030, medium-risk completion 2035) .
 
-### 6.2  Scientific foundation
+## 6.2  Scientific foundation
 
 **Quantum risk geometry.** Shor’s and Grover’s algorithms prove that once a *cryptographically-relevant quantum computer* (CRQC) exists, RSA/ECC and many symmetric-key constructions lose their assumed security margins. The most widely used quantitative model is the *Mosca Inequality*:
 
@@ -16,21 +16,21 @@ The shelf-life of the data, the organisation’s migration time, and the expert-
 
 **Standards landscape.** In August 2024 NIST issued the first three Federal Information Processing Standards: FIPS 203 (ML-KEM / Kyber), FIPS 204 (ML-DSA / Dilithium) and FIPS 205 (SPHINCS+) . Forthcoming FIPS 206 (BIKE) and ISO/ETSI profiles will refine parameter sets, but the decision rule is already clear: design choices should default to these lattice- or hash-based schemes unless an explicit profile (IoT, constrained, statutory) dictates otherwise.
 
-### 6.3  Design principles
+## 6.3  Design principles
 
 1. **Crypto-agility first.** Because algorithm lifetimes are uncertain, architectures must allow hot-swapping of primitives without forklift upgrades .
 2. **Inventory before surgery.** Every migration failure studied by TNO traced back to an incomplete asset list; hence inventory is a non-negotiable gate .
 3. **Hybrid ≥ single-stack.** Where performance permits, run lattice-based KEMs or signatures *alongside* existing ECC/RSA until the latter can be fully retired. ETSI/IETF interop plug-tests show this halves rollback risk .
 4. **Evidence over assertion.** Each stage outputs machine-readable artefacts—CBOMs, risk scores, migration run-books—that auditors and regulators can parse automatically.
 
-### 6.4  Lifecycle phases
+## 6.4  Lifecycle phases
 
-#### 6.4.1  Phase 0 – Programme mobilisation
+### 6.4.1  Phase 0 – Programme mobilisation
 
 Although not counted among the five PAREK stages, a short mobilisation sprint (4–6 weeks) is advisable to assign roles, secure budget and ratify the scope statements defined in §3.
 
 
-#### 6.4.2  Phase 1 – Cryptographic discovery & inventory (“P” in PAREK)
+### 6.4.2  Phase 1 – Cryptographic discovery & inventory (“P” in PAREK)
 
 **Objective.** Build a *single source of truth* describing every algorithm, key, certificate, protocol, hardware module and crypto-library instance.
 
@@ -48,7 +48,7 @@ Although not counted among the five PAREK stages, a short mobilisation sprint (4
 * Gap register listing unscanned networks or black-box third-party services
 
 
-#### 6.4.3  Phase 2 – Quantum risk assessment (“A”)
+### 6.4.3  Phase 2 – Quantum risk assessment (“A”)
 
 **Objective.** Quantify urgency and migration difficulty, then classify systems into EU “high / medium / low” buckets.
 
@@ -69,7 +69,7 @@ where weights *w1–w4* are calibrated by sector regulators. TNO’s handbook su
 * Heat-map dashboard for C-suite and board reporting
 
 
-#### 6.4.4  Phase 3 – Road-mapping & readiness planning (“R”)
+### 6.4.4  Phase 3 – Road-mapping & readiness planning (“R”)
 
 **Objective.** Translate scores into dated, budgeted work-packages aligned with EU milestones.
 
@@ -87,7 +87,7 @@ where weights *w1–w4* are calibrated by sector regulators. TNO’s handbook su
 * Contract addenda language for suppliers
 
 
-#### 6.4.5  Phase 4 – Execution & migration (“E”)
+### 6.4.5  Phase 4 – Execution & migration (“E”)
 
 **Objective.** Replace—or wrap in hybrid mode—all quantum-vulnerable primitives, while preserving service levels.
 
@@ -107,7 +107,7 @@ where weights *w1–w4* are calibrated by sector regulators. TNO’s handbook su
 * Certificate revocation & renewal schedule
 
 
-#### 6.4.6  Phase 5 – Key-governance & continuous improvement (“K”)
+### 6.4.6  Phase 5 – Key-governance & continuous improvement (“K”)
 
 **Objective.** Ensure that once migrated, systems stay quantum-resilient—even as algorithms evolve or new vulnerabilities surface.
 
@@ -119,16 +119,16 @@ where weights *w1–w4* are calibrated by sector regulators. TNO’s handbook su
 * **Metric suite:** Mean Time To Remediate Weak Crypto (MTTR-C), % assets with valid CBOM, % PQC certificates in production. These feed into ENISA reporting and, under NIS-2, into supervisory audits.
 
 
-### 6.5  Embedding the methodology in EU governance
+## 6.5  Embedding the methodology in EU governance
 
 Member States’ NIS Cooperation Group work-stream recommends each national roadmap publish quarterly status against the core measures above and contribute pilot results to the EU testing infrastructure . By harmonising metrics and artefacts (CBOM JSON, QARS spreadsheets, FIPS certificate IDs), the methodology enables cross-border comparability and pooled threat-intelligence.
 
 
-### 6.6  Limitations and future research
+## 6.6  Limitations and future research
 
 While lattice-based KEMs currently lead standardisation, code-based (Classic McEliece) and isogeny-based (SIKE-like) schemes deserve niche consideration; the methodology therefore reserves an *Experimental Track* for low-volume prototypes. The scientific community is still refining fault-tolerance thresholds—e.g., the debate around “dynamic-logical qubits” may shift T­­threat earlier or later. Organisations must budget for annual model recalibration as these estimates mature.
 
 
-### 6.7  Conclusion
+## 6.7  Conclusion
 
 This PQC Methodology equips EU organisations with a science-grounded, regulator-aligned and audit-ready pathway from cryptographic discovery to long-term quantum resilience. By anchoring every decision in measurable artefacts—CBOMs, risk scores, migration run-books—and iterating through the PAREK lifecycle, enterprises can defend today’s and tomorrow’s data against the quantum horizon.

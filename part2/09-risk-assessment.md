@@ -1,4 +1,4 @@
-### A – Assessment of Quantum Risk***
+# 9 A – Assessment of Quantum Risk
 
 > **Purpose of this chapter** – define a repeatable, data‑driven methodology for quantifying how urgently each system, data set or supplier must migrate to post‑quantum cryptography.  The output of this stage—**Quantum‑Adjusted Risk Scores (QARS)**—feeds Road‑mapping (§10) and underpins budget and resource prioritisation.
 

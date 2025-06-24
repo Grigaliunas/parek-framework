@@ -1,4 +1,4 @@
-### Roles, Responsibilities & RACI***
+# 14 Roles, Responsibilities & RACI
 
 
 > **Purpose of this chapter** – assign clear **R**esponsible, **A**ccountable, **C**onsulted and **I**nformed ownership for every stage, artefact and quality gate in the PAREK Framework, so that decision‑making is transparent and compliant with EU governance norms (NIS 2, DORA, GDPR, CRA).

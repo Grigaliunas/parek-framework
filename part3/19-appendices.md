@@ -1,4 +1,4 @@
-### 19  Appendices – Supporting Artefacts & Deep‑Dive Material***
+# 19  Appendices – Supporting Artefacts & Deep‑Dive Material
 
 > **Purpose** – enumerate and briefly describe the supplementary artefacts that provide extra depth, raw data or worked examples referenced throughout the handbook.  Each appendix lives either as a standalone Markdown/PDF in `assets/appendix/` or as an embedded section below.
 

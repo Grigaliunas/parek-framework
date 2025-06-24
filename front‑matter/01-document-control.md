@@ -1,4 +1,4 @@
-### Document Control & Revision History***
+# 1 Document Control & Revision History
 
 
 > This file provides the authoritative revision history for the *PAREK Framework – EU Post‑Quantum Cryptography Transition Handbook*.  Update **only** via pull‑request.  Each entry must be approved by the Handbook Steering Committee.

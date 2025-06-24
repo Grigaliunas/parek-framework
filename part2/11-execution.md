@@ -1,4 +1,4 @@
-### E – Execution & Migration***
+# 11 E – Execution & Migration
 
 > **Purpose of this chapter** – provide a practical playbook for migrating systems from quantum‑vulnerable cryptography to post‑quantum or hybrid primitives while maintaining service continuity, performance, and compliance.  It covers deployment models, testing strategies, rollback procedures and quality gates.
 

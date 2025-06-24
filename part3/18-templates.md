@@ -1,4 +1,4 @@
-### 18  Templates, Check‑lists & Sample Artefacts***
+# 18  Templates, Check‑lists & Sample Artefacts
 
 
 > **Purpose** – catalogue the ready‑to‑use artefacts that accelerate PAREK implementation: spreadsheets, questionnaires, run‑books and document stubs.  All templates live under the repository’s **`assets/templates/`** folder so teams can clone or download them directly.

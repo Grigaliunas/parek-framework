@@ -1,4 +1,4 @@
-###16  Reference Architectures & Tooling***
+# 16  Reference Architectures & Tooling
 
 > **Purpose of this chapter** – provide opinionated, EU‑aligned reference architectures that engineering teams can adopt or adapt when implementing PAREK migrations.  Each pattern embraces open‑source baselines, indicates where commercial substitutes may slot in, and highlights regulatory hooks (NIS 2, DORA, CRA, eIDAS 2).
 

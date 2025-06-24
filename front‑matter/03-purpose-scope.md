@@ -1,4 +1,4 @@
-### Purpose, Scope & Audience***
+# 3 Purpose, Scope & Audience
 
 > **Purpose of this section** – clarify *why* the handbook exists, *what* systems and data it covers, and *who* should read and apply its guidance.
 
