@@ -3,7 +3,7 @@
 Welcome to the **PAREK Framework** repository. Here you will find the full Markdown source, assets and build tooling for the *PAREK Framework: EU Post‑Quantum Cryptography Transition Handbook*.
 
 *Live handbook preview →* [**https://www.pqc.lt**](https://www.pqc.lt)\
-*Contact →* [**pagalba@pqc.lt**](mailto\:pagalba@pqc.lt)
+*Contact →* [**hello@pqc.lt**](mailto\:hello@pqc.lt)
 
 ---
 
