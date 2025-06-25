@@ -106,7 +106,7 @@ $ mkdocs serve
 
 1. **Fork** the repo & create a branch: `git checkout -b section-08-typos`.
 2. **Edit the Markdown file** in question.
-3. **Run **`` to ensure style and link checks pass.
+3. **Run ** to ensure style and link checks pass.
 4. **Submit Pull Request** referencing the issue number (if any).
 
 Check the **CONTRIBUTING.md** for detailed style guidance.
