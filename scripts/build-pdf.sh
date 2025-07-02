@@ -1,34 +1,51 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------
-# scripts/build-pdf.sh — compile the entire PAREK Handbook into a single PDF
-#
-# Prerequisites:
-#   • Pandoc ≥ 3.0   • pandoc-crossref   • LaTeX engine (xelatex / lualatex)
-#   • Directory structure exactly as per README.md (front‑matter/, part1/, …)
+# build-pdf.sh — compile PAREK Handbook to PDF or LaTeX
 #
 # Usage:
-#   $ chmod +x ./scripts/build-pdf.sh
-#   $ ./scripts/build-pdf.sh          # writes output/parek-handbook.pdf
-#   $ ./scripts/build-pdf.sh draft    # writes output/parek-handbook-draft.pdf
+#   ./build-pdf.sh                → builds output/parek-handbook.pdf
+#   ./build-pdf.sh tex            → builds .tex instead of PDF
+#   ./build-pdf.sh draft tex      → builds output/parek-handbook-draft.tex
 #-------------------------------------------------------------------------------
+
 set -euo pipefail
 
+# 0. Detect shell
+if [[ -n "${ZSH_VERSION:-}" ]]; then echo "[info] Running under ZSH"
+elif [[ -n "${BASH_VERSION:-}" ]]; then echo "[info] Running under BASH"
+else echo "[warn] Unknown shell"; fi
+
+# 1. Setup
 GREEN="\033[0;32m"; BOLD="\033[1m"; NC="\033[0m"
 msg() { echo -e "${GREEN}${BOLD}[pdf]${NC} $1"; }
 
-#------------------------------------------------
-# 1. Variables
-#------------------------------------------------
 OUT_DIR="output"
 DEFAULT_NAME="parek-handbook"
-SUFFIX="${1:-}"                # optional arg appended to filename
-OUT_FILE="${DEFAULT_NAME}${SUFFIX:+-${SUFFIX}}.pdf"
+
+# Handle args
+SUFFIX=""
+BUILD_TEX="false"
+for arg in "$@"; do
+  if [[ "$arg" == "tex" ]]; then BUILD_TEX="true"
+  else SUFFIX="${arg}"; fi
+done
+
+EXT="$([[ "$BUILD_TEX" == "true" ]] && echo "tex" || echo "pdf")"
+EXT_UPPER=$(echo "$EXT" | tr '[:lower:]' '[:upper:]')
+OUT_FILE="${DEFAULT_NAME}${SUFFIX:+-${SUFFIX}}.${EXT}"
 TARGET="${OUT_DIR}/${OUT_FILE}"
 TMP_LIST="$(mktemp)"
+trap 'rm -f "$TMP_LIST"' EXIT
 
-#------------------------------------------------
-# 2. Build ordered chapter list according to numeric prefixes
-#------------------------------------------------
+# 2. Tool check
+for cmd in pandoc pandoc-crossref; do
+  command -v "$cmd" >/dev/null || { echo "[error] Missing: $cmd"; exit 1; }
+done
+
+[[ "$BUILD_TEX" == "true" ]] || command -v xelatex >/dev/null || {
+  echo "[error] Missing: xelatex for PDF build"; exit 1; }
+
+# 3. Gather sources
 msg "Generating ordered chapter list…"
 {
   find front-matter -type f -name "*.md"
@@ -37,32 +54,33 @@ msg "Generating ordered chapter list…"
   find part3        -type f -name "*.md"
 } | sort -V > "$TMP_LIST"
 
-if [[ ! -s "$TMP_LIST" ]]; then
-  echo "No source files found. Check directory structure." >&2; exit 1
-fi
+[[ -s "$TMP_LIST" ]] || { echo "[error] No chapters found."; exit 1; }
 
-#------------------------------------------------
-# 3. Ensure output directory exists
-#------------------------------------------------
+# 4. Output dir
 mkdir -p "$OUT_DIR"
 
-#------------------------------------------------
-# 4. Run Pandoc
-#------------------------------------------------
-msg "Building PDF → ${TARGET}"
+# 5. Pandoc includes
+HEADER="assets/pandoc/header.tex"
+AFTER="assets/pandoc/after-body.tex"
+INCLUDE_ARGS=()
+[[ -f "$HEADER" ]] && INCLUDE_ARGS+=(--include-in-header="$HEADER")
+[[ -f "$AFTER"  ]] && INCLUDE_ARGS+=(--include-after-body="$AFTER")
+
+# 6. Run Pandoc
+msg "Building $(echo "$EXT" | tr '[:lower:]' '[:upper:]') → ${TARGET}"
+
 pandoc \
   --from markdown+yaml_metadata_block+smart \
-  --pdf-engine=xelatex \
-  --toc --toc-depth=2 \
-  -N                             # number sections
-  --filter pandoc-crossref \
+  "${INCLUDE_ARGS[@]}" \
   --metadata lang=en \
   --metadata title="PAREK Framework – EU Post‑Quantum Cryptography Transition Handbook" \
   --metadata date="$(date +%Y-%m-%d)" \
-  --include-in-header=assets/pandoc/header.tex \
-  --include-after-body=assets/pandoc/after-body.tex \
+  --toc --toc-depth=2 \
+  -N \
+  --filter pandoc-crossref \
+  $( [[ "$BUILD_TEX" != "true" ]] && echo "--pdf-engine=xelatex" ) \
   -o "$TARGET" \
-  $(cat "$TMP_LIST")
+  $(<"$TMP_LIST")
 
-msg "✅ PDF generated at $TARGET"
-rm "$TMP_LIST"
+msg "✅ $EXT_UPPER successfully generated: $TARGET"
+    
