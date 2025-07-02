@@ -1,0 +1,27 @@
+% Final fallback header.tex — works with MacTeX + XeLaTeX on macOS
+
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}     % ✔
+\newcommand{\xmark}{\ding{55}}     % ✘
+\newcommand{\checkbox}{\ding{113}} % ☐
+\newcommand{\radiobox}{\ding{109}} % ◉
+\newcommand{\arrowmark}{\ding{228}} % →
+
+\usepackage{amsmath, amssymb}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{PAREK Framework}
+\fancyhead[R]{\today}
+\fancyfoot[C]{\thepage}

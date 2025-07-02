@@ -1,0 +1,4075 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  english,
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Final fallback header.tex — works with MacTeX + XeLaTeX on macOS
+
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}     % ✔
+\newcommand{\xmark}{\ding{55}}     % ✘
+\newcommand{\checkbox}{\ding{113}} % ☐
+\newcommand{\radiobox}{\ding{109}} % ◉
+\newcommand{\arrowmark}{\ding{228}} % →
+
+\usepackage{amsmath, amssymb}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{PAREK Framework}
+\fancyhead[R]{\today}
+\fancyfoot[C]{\thepage}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={PAREK Framework -- EU Post‑Quantum Cryptography Transition Handbook},
+  pdflang={en},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{PAREK Framework -- EU Post‑Quantum Cryptography Transition
+Handbook}
+\author{}
+\date{2025-07-02}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{1 Document Control \& Revision
+History}\label{document-control-revision-history}
+
+\begin{quote}
+This file provides the authoritative revision history for the
+\emph{PAREK Framework -- EU Post‑Quantum Cryptography Transition
+Handbook}. Update \textbf{only} via pull‑request. Each entry must be
+approved by the Handbook Steering Committee.
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0648}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1481}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1944}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2685}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3241}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Version
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Date (YYYY‑MM‑DD)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Editor
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Section(s) changed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Change description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0.1 & 2025‑06‑24 & PAREK Editorial Team & Initial skeleton & Created
+document control template \\
+\end{longtable}
+
+\subsubsection{How to update}\label{how-to-update}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Increment the \textbf{version} number using semantic format (e.g.,
+  \texttt{0.2}, \texttt{1.0}).\\
+\item
+  Add a concise \textbf{change description} (≤~100~characters).\\
+\item
+  If multiple sections change, list comma‑separated values in
+  \textbf{Section(s) changed)}.\\
+\item
+  Commit the file and open a pull request tagged
+  \texttt{\#document‑control}.
+\end{enumerate}
+
+\section{2 Executive Summary}\label{executive-summary}
+
+\begin{quote}
+\textbf{Purpose of this section} -- provide senior stakeholders with a
+concise, non‑technical overview of the quantum‑threat context, the PAREK
+Framework's objectives, and the high‑level roadmap that underpins the
+handbook. This one‑pager should be intelligible to board members,
+regulators and project sponsors.
+\end{quote}
+
+\subsection{Executive Summary (draft placeholder -- to be expanded in
+v0.2)}\label{executive-summary-draft-placeholder-to-be-expanded-in-v0.2}
+
+The advent of \textbf{cryptographically‑relevant quantum computers
+(CRQC)} will render today's RSA and ECC protections ineffective, putting
+long‑lived confidential data at risk of \emph{harvest‑now‑decrypt‑later}
+attacks. To safeguard digital sovereignty and comply with forthcoming EU
+mandates, organisations must transition to \textbf{post‑quantum
+cryptography (PQC)} well before widely available CRQC capabilities
+emerge.
+
+The \textbf{PAREK Framework} offers a five‑stage
+lifecycle---\textbf{P}ost‑quantum asset \& algorithm inventory,
+\textbf{A}ssessment of quantum risk, \textbf{R}oad‑mapping \& readiness
+planning, \textbf{E}xecution \& migration, and \textbf{K}ey‑governance
+\& continuous improvement. It aligns with the EU Coordinated
+Implementation Roadmap timelines (inventory baseline by 2026, high‑risk
+cut‑over by 2030, and medium‑risk completion by 2035) and integrates
+NIST FIPS‑validated algorithms (ML‑KEM, ML‑DSA, SPHINCS+).
+
+Successful adoption hinges on three pillars: 1. \textbf{Comprehensive
+discovery} of cryptographic assets (CBOMs) across the entire estate. 2.
+\textbf{Risk‑based prioritisation} using the Quantum‑Adjusted Risk Score
+(QARS). 3. \textbf{Supplier integration} via contract clauses and
+machine‑readable attestations.
+
+By following PAREK, the organisation will achieve crypto‑agility,
+maintain regulatory compliance, and preserve stakeholder trust in the
+quantum era.
+
+\emph{(This text is a high‑level placeholder. Subsequent revisions will
+incorporate quantitative risk metrics, budget highlights and KPI
+snapshots once sections 8--15 are finalised.)}
+
+\section{3 Purpose, Scope \& Audience}\label{purpose-scope-audience}
+
+\begin{quote}
+\textbf{Purpose of this section} -- clarify \emph{why} the handbook
+exists, \emph{what} systems and data it covers, and \emph{who} should
+read and apply its guidance.
+\end{quote}
+
+\subsection{3.1 Purpose (placeholder)}\label{purpose-placeholder}
+
+The \emph{PAREK Framework Handbook} establishes a common, evidence‑based
+approach for migrating the organisation's cryptography to post‑quantum
+algorithms in alignment with EU regulatory timelines and industry best
+practice. It consolidates policies, processes and technical playbooks
+into a single authoritative source.
+
+\subsection{3.2 Scope (placeholder)}\label{scope-placeholder}
+
+\begin{quote}
+\emph{To be detailed in v0.2 once the asset inventory (§8) and risk
+classification (§9) are baselined.}
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2308}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1385}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.6308}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Domain
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+In scope?
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Notes (draft)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Production apps & ✔ & All customer‑facing and back‑office apps \\
+Dev/test envs & ✔ & CI/CD pipelines, test data masks \\
+OT/ICS networks & ☐ & Pending risk assessment outcome \\
+Third‑party SaaS & ✔ & Subject to CBOM/contract clauses (see §13) \\
+Legacy mainframe & ☐ & Migration feasibility under investigation \\
+\end{longtable}
+
+\subsection{3.3 Audience (placeholder)}\label{audience-placeholder}
+
+Primary readers: - \textbf{Executive sponsors} (CIO, CISO, CRO) --
+governance \& budget - \textbf{Security architects / cryptographers} --
+technical standards - \textbf{Product \& dev‑ops teams} --
+implementation guidance - \textbf{Procurement \& legal} -- supplier
+clauses, contract annexes - \textbf{Regulators \& auditors} --
+compliance evidence
+
+Secondary readers: - Vendors, open‑source maintainers, academic
+reviewers.
+
+\begin{quote}
+Subsequent revisions will flesh out scope exclusions, detailed audience
+personas, and cross‑references to internal policies once sections 4--15
+mature.
+\end{quote}
+
+\section{4 Regulatory \& Strategic
+Context}\label{regulatory-strategic-context}
+
+\begin{quote}
+\textbf{Purpose of this section} -- highlight the EU directives,
+national regulations and international standards that drive the
+organisation's post‑quantum transition, and explain how the PAREK
+Framework aligns with these external obligations.
+\end{quote}
+
+\subsection{\texorpdfstring{4.1 EU regulatory landscape
+\emph{(placeholder)}}{4.1 EU regulatory landscape (placeholder)}}\label{eu-regulatory-landscape-placeholder}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{NIS~2 Directive} -- security and reporting duties for
+  essential/important entities.\\
+\item
+  \textbf{Cyber Resilience Act (CRA)} -- forthcoming product‑security
+  requirements incl.~cryptographic transparency.\\
+\item
+  \textbf{EU Coordinated Implementation Roadmap for PQC (2025)} -- joint
+  milestones: inventory 2026, high‑risk cut‑over 2030, medium‑risk 2035.
+\end{itemize}
+
+\emph{(Detailed mapping to be added when national transposition
+timelines are confirmed.)}
+
+\subsection{\texorpdfstring{4.2 Strategic alignment
+\emph{(placeholder)}}{4.2 Strategic alignment (placeholder)}}\label{strategic-alignment-placeholder}
+
+Describe how the organisation's cyber‑security strategy,
+data‑classification policy and digital‑sovereignty goals intersect with
+PQC adoption.
+
+\subsection{\texorpdfstring{4.3 External standards map
+\emph{(placeholder)}}{4.3 External standards map (placeholder)}}\label{external-standards-map-placeholder}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4318}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1591}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4091}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Standard
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Relevance to PAREK
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{NIST FIPS~203‑205} & Final & Baseline algorithms (ML‑KEM,
+ML‑DSA, SPHINCS+) \\
+ISO/IEC~DIS~14888‑4 & Draft & PQ signatures \\
+ETSI~TS~103~829 & Stable & Hybrid key exchange \\
+\end{longtable}
+
+\emph{(Will expand once draft texts are ratified.)}
+
+\begin{quote}
+Subsequent revisions will add jurisdiction‑specific compliance
+deadlines, cross‑reference to §15 KPIs, and commentary on industry
+guidance (e.g., ENISA reports).
+\end{quote}
+
+\section{5 Quantum Threat Landscape}\label{quantum-threat-landscape}
+
+\begin{quote}
+\textbf{Purpose of this chapter} -- present an evidence‑based assessment
+of how, when and why quantum computing threatens today's cryptographic
+defences, and establish the urgency that underpins every subsequent
+stage of the PAREK Framework.
+\end{quote}
+
+\subsection{5.1 Executive overview}\label{executive-overview}
+
+A new generation of \textbf{cryptographically‑relevant quantum computers
+(CRQC)} threatens to break RSA and elliptic‑curve public‑key
+cryptography, as well as reduce the effective security of some symmetric
+systems. Although no public demonstration of large‑scale key‑recovery
+exists as of \emph{June~2025}, the physics, engineering and economic
+trends analysed in this chapter indicate that organisations must
+complete the transition to post‑quantum cryptography (PQC) \textbf{well
+before 2035} to avert the twin risks of \emph{harvest‑now‑decrypt‑later}
+(HNDL) attacks and regulatory sanction.
+
+Key messages:
+
+\begin{itemize}
+\tightlist
+\item
+  Commercial hardware roadmaps (IBM ``Kookaburra'' 1,386‑qubit chip,
+  planned for late~2025) illustrate a \textbf{quadratic growth curve}
+  comparable to early classical Moore's
+  Law~(\href{https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025?utm_source=chatgpt.com}{ibm.com}).
+\item
+  Expert‑elicitation studies (Global Risk Institute \emph{Quantum Threat
+  Timeline 2024 \&~2025}) put the median arrival of a CRQC capable of
+  breaking RSA‑2048 in the \textbf{early‑to‑mid 2030s}, with a 10\,\%
+  probability the event occurs \textbf{before
+  2030}~(\href{https://globalriskinstitute.org/publication/2024-quantum-threat-timeline-report/?utm_source=chatgpt.com}{globalriskinstitute.org},
+  \href{https://globalriskinstitute.org/publication/quantum-threat-timeline-2025-executive-perspectives-on-barriers-to-action/?utm_source=chatgpt.com}{globalriskinstitute.org}).
+\item
+  Real‑world HNDL behaviour is now documented across sectors such as
+  maritime logistics and financial
+  services~(\href{https://www.marinelink.com/news/harvest-decrypt-later-526089?utm_source=chatgpt.com}{marinelink.com},
+  \href{https://www.keyfactor.com/blog/harvest-now-decrypt-later-a-new-form-of-attack/?utm_source=chatgpt.com}{keyfactor.com}).
+\item
+  Regulators have moved from guidance to \textbf{mandatory timelines}
+  (e.g., US OMB M‑23‑02, EU Coordinated Implementation Roadmap, Europol
+  Quantum Safe Financial
+  Forum)~(\href{https://www.reuters.com/technology/cybersecurity/europol-body-banks-should-prepare-quantum-computer-risk-now-2025-02-07/?utm_source=chatgpt.com}{reuters.com}).
+\end{itemize}
+
+The remainder of this chapter unpacks these trends and quantifies the
+residual uncertainty.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.2 From laboratory curiosity to
+CRQC}\label{from-laboratory-curiosity-to-crqc}
+
+A CRQC is not just a bigger quantum processor; it must combine
+\textbf{millions of physical qubits}, fast classical co‑processing and
+robust error correction to implement Shor's algorithm at scale. The
+consensus path involves:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Hardware scaling} -- IBM's 1,121‑qubit \emph{Condor} (2024)
+  and planned 4,158‑qubit multi‑chip Kookaburra system
+  (2025‑26)~(\href{https://www.ibm.com/quantum/blog/quantum-roadmap-2033?utm_source=chatgpt.com}{ibm.com},
+  \href{https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025?utm_source=chatgpt.com}{ibm.com}).
+\item
+  \textbf{Error‑correction breakthroughs} -- low‑overhead surface codes
+  + lattice surgery lowering logical‑to‑physical ratios by 30‑50\,\%
+  (published Nature, Feb~2025).
+\item
+  \textbf{Interconnects \& parallelism} -- photonic links to cluster
+  cryostats, already demonstrated in AWS Braket prototypes.
+\end{enumerate}
+
+Resource‑estimation papers (Gidney \&~Ekerå 2023) suggest breaking
+RSA‑2048 would require \textasciitilde20\,M physical qubits running for
+8\,hours at 10−3 physical error rates. The delta between current
+prototypes and this target is shrinking annually by \textbf{1‑2 orders
+of magnitude}.
+
+\subsection{5.3 Threat timeline
+projections}\label{threat-timeline-projections}
+
+\subsubsection{5.3.1 Survey‑based
+forecasts}\label{surveybased-forecasts}
+
+The Global Risk Institute's \emph{2024 Quantum Threat Timeline} surveyed
+61 experts across academia and industry. Results (Figure~1) assign:
+
+\begin{itemize}
+\tightlist
+\item
+  10\,\% probability of CRQC by \textbf{2029}
+\item
+  50\,\% probability by \textbf{2033‑2035}
+\item
+  90\,\% probability by \textbf{2039‑2040}
+\end{itemize}
+
+An updated \emph{2025 Executive Perspective} report, focusing on
+financial‑sector CISOs, reveals that \textbf{one‑third of respondents
+shortened their internal ``must‑migrate‑by'' date by 2~years} compared
+with
+2023~(\href{https://globalriskinstitute.org/publication/quantum-threat-timeline-2025-executive-perspectives-on-barriers-to-action/?utm_source=chatgpt.com}{globalriskinstitute.org}).
+
+\subsubsection{5.3.2 Engineering trend
+extrapolation}\label{engineering-trend-extrapolation}
+
+IBM's roadmap shows qubit count doubling roughly every 18~months since
+2017. If sustained, a 2‑M qubit device (roughly RSA‑2048 breaking
+threshold) is plausible by \textbf{2031‑2033}. While \emph{hardware
+alone is not destiny}, software stack and cryogenics must co‑evolve; yet
+venture‑capital funding ballooned to USD~4.2\,B in 2024, signalling
+market capacity to close those gaps.
+
+\subsection{5.4 Harvest‑now‑decrypt‑later
+evidence}\label{harvestnowdecryptlater-evidence}
+
+Analysts at Keyfactor and Mandiant observe APT groups stockpiling
+TLS‑encrypted session captures and VPN archives since at least 2021.
+Shipping‑sector telemetry from Marlink (Q4~2024) logged nine billion
+encrypted packets exfiltrated and stored in off‑net
+buckets~(\href{https://www.keyfactor.com/blog/harvest-now-decrypt-later-a-new-form-of-attack/?utm_source=chatgpt.com}{keyfactor.com},
+\href{https://www.marinelink.com/news/harvest-decrypt-later-526089?utm_source=chatgpt.com}{marinelink.com}).
+Although current classical resources cannot decrypt them, \textbf{data
+confidentiality lifetimes}---especially in finance, healthcare and
+national security---often exceed 25~years, bridging the gap to plausible
+CRQC dates.
+
+\subsection{5.5 Regulatory accelerants}\label{regulatory-accelerants}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4444}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2593}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2963}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Jurisdiction
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mandate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Deadline
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{United States} & OMB M‑23‑02: agencies submit PQC inventory →
+migrate high‑impact systems & Inventory 2027; migration end‑2035 \\
+\textbf{European Union} & Coordinated Roadmap: inventory baseline,
+high‑risk cut‑over & 2026; 2030; 2035 \\
+\textbf{Brazil} & Central Bank circular on quantum‑safe data storage &
+2032 \\
+\textbf{Global finance} & Europol‑backed Quantum Safe Financial Forum
+urges ``prepare now'' & Guidance
+Feb~2025~(\href{https://www.reuters.com/technology/cybersecurity/europol-body-banks-should-prepare-quantum-computer-risk-now-2025-02-07/?utm_source=chatgpt.com}{reuters.com}) \\
+\end{longtable}
+
+NIST cemented the algorithm baseline with \textbf{FIPS 203 (ML‑KEM), 204
+(ML‑DSA) and 205 (SPHINCS+)} in August\,2024, removing a key blocker to
+production
+rollout~(\href{https://csrc.nist.gov/news/2024/postquantum-cryptography-fips-approved?utm_source=chatgpt.com}{csrc.nist.gov}).
+
+\subsection{5.6 Sector‑specific impact
+analysis}\label{sectorspecific-impact-analysis}
+
+\subsubsection{5.6.1 Finance}\label{finance}
+
+\begin{itemize}
+\tightlist
+\item
+  Long data retention (KYC, trade archives) + high Target~Value (TV) ⇒
+  migration priority.
+\item
+  Real‑time performance constraints encourage \textbf{hybrid TLS 1.3
+  (Kyber+ECDHE)} as interim measure.
+\end{itemize}
+
+\subsubsection{5.6.2 Healthcare}\label{healthcare}
+
+\begin{itemize}
+\tightlist
+\item
+  Patient records need 70‑year confidentiality.
+\item
+  Medical devices often lack firmware update paths → hardware refresh
+  cycles must accelerate.
+\end{itemize}
+
+\subsubsection{5.6.3 Critical
+infrastructure}\label{critical-infrastructure}
+
+\begin{itemize}
+\tightlist
+\item
+  Industrial control protocols (OPC~UA, DNP3) historically weak on
+  crypto; retrofit costs high.
+\item
+  Quantum risk intersects safety risk → regulator scrutiny rising.
+\end{itemize}
+
+\subsection{5.7 Risk quantification
+models}\label{risk-quantification-models}
+
+\subsubsection{5.7.1 Mosca inequality}\label{mosca-inequality}
+
+\texttt{T\_shelf‑life~+\ T\_migration~\textgreater{}~T\_threat~⇒\ exposure}
+* \texttt{T\_shelf‑life} -- required confidentiality window (years) *
+\texttt{T\_migration} -- time to complete PQC rollout (years) *
+\texttt{T\_threat} -- forecast years until CRQC
+
+Applying median GRI threat horizon (2034) and typical bank migration
+estimate (7\,years) leaves organisations with
+\textbf{\textless\,2\,years to start} if they store 10‑year confidential
+data.
+
+\subsubsection{5.7.2 Quantum‑adjusted risk score
+(QARS)}\label{quantumadjusted-risk-score-qars}
+
+Section~9 formalises QARS = \texttt{w₁·(T\_shelf/T\_threat)\ +\ …}. This
+chapter seeds baseline values for \texttt{T\_threat} according to expert
+surveys, and Section~9 will refine per sector.
+
+\subsection{5.8 Emerging technical
+counter‑measures}\label{emerging-technical-countermeasures}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Hybrid key exchange} -- IETF RFC~9399 profiles Kyber + X25519.
+\item
+  \textbf{Hash‑based signatures} -- SPHINCS+ for firmware where
+  statelessness matters.
+\item
+  \textbf{Quantum‑resistant VPNs} -- WireGuard fork with Kyber prime,
+  early pilots at European research networks.
+\item
+  \textbf{Hardware crypto‑agility} -- HSM vendors announcing firmware
+  roadmaps targeting FIPS~203 Level~3 by 2026.
+\end{enumerate}
+
+\subsection{5.9 Uncertainty and accelerating
+factors}\label{uncertainty-and-accelerating-factors}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3919}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3378}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2703}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Factor
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Might \textbf{accelerate} CRQC
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Might \textbf{delay} CRQC
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Error‑correction code advances & Breakthroughs in LDPC‑surface hybrids &
+Diminishing returns in code discovery \\
+Venture funding & Sustained VC + government subsidies & Investment
+winter post‑2026 \\
+Geopolitical race & State‑level moonshot funding (US, CN) & Export
+controls on cryogenics \\
+Hardware yields & Photonic interconnect yields improve & Cryogenic
+supply‑chain bottlenecks \\
+\end{longtable}
+
+\textbf{Scenario planning} (Appendix~B) explores a ``Fast‑Track'' case
+(CRQC\,=\,2029) and ``Delayed'' case (CRQC\,=\,2040) to stress‑test
+organisational roadmaps.
+
+\subsection{5.10 Key takeaways for PAREK
+implementation}\label{key-takeaways-for-parek-implementation}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Start now} -- inventory and pilot migrations must commence by
+  2026 to remain compliant with EU roadmap.
+\item
+  \textbf{Assume shrinkage in threat horizon} -- treat 2030 as plausible
+  worst‑case, not aspirational.
+\item
+  \textbf{Focus on data longevity} -- prioritise assets whose
+  confidentiality window extends into the 2030s.
+\item
+  \textbf{Engage suppliers early} -- Section~13 outlines contract
+  clauses; delays compound on CRQC acceleration.
+\item
+  \textbf{Invest in crypto‑agility} -- architectures that can hot‑swap
+  algorithms mitigate uncertainty.
+\end{enumerate}
+
+\subsection{5.11 References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Global Risk Institute (2024). \emph{Quantum Threat Timeline Report
+  2024}.
+\item
+  Global Risk Institute (2025). \emph{Quantum Threat Timeline 2025:
+  Executive Perspectives}.
+\item
+  IBM (2024). \emph{Roadmap to Quantum‑Centric Supercomputers}.
+\item
+  IBM (2025). \emph{The Era of Quantum Utility Is Here}.
+\item
+  NIST (2024). \emph{Approval of FIPS~203,\,204,\,205}.
+\item
+  Keyfactor (2024). \emph{Harvest Now, Decrypt Later}.
+\item
+  Marlink SOC Report (2025). \emph{Harvest‑Decrypt Incidents in Maritime
+  Sector}.
+\item
+  Europol Quantum Safe Financial Forum (2025). \emph{Recommendations to
+  European Banks}.
+\item
+  SecurityWeek (2025). \emph{Cyber Insights 2025 -- Quantum and the
+  Threat to Encryption}.
+\item
+  Gidney, C. \&~Ekerå, M. (2023). \emph{How to Factor 2048‑bit RSA
+  Integers in 8~Hours with 20~Million Noisy Qubits}.
+\end{enumerate}
+
+\section{6 PQC Methodology}\label{pqc-methodology}
+
+\subsection{6.1 Purpose and position of this
+chapter}\label{purpose-and-position-of-this-chapter}
+
+This methodology bridges the ``\textbf{why}'' articulated in the
+quantum-threat literature with the practical ``\textbf{how}'' codified
+in the PAREK framework. It supplies a repeatable
+lifecycle---\emph{discover → assess → plan → execute → improve}---that
+any EU organisation can embed in its security management system and map
+onto the milestones of the Coordinated Implementation Roadmap
+(first-steps 2026, high-risk cut-over 2030, medium-risk completion 2035)
+.
+
+\subsection{6.2 Scientific foundation}\label{scientific-foundation}
+
+\textbf{Quantum risk geometry.} Shor's and Grover's algorithms prove
+that once a \emph{cryptographically-relevant quantum computer} (CRQC)
+exists, RSA/ECC and many symmetric-key constructions lose their assumed
+security margins. The most widely used quantitative model is the
+\emph{Mosca Inequality}:
+
+\begin{quote}
+\textbf{T­­shelf-life + T­­migration \textgreater{} T­­threat ⇒ your data will
+be exposed.}
+\end{quote}
+
+The shelf-life of the data, the organisation's migration time, and the
+expert-assessed CRQC timeline must be evaluated together; breaches can
+begin long before a CRQC is built through
+\emph{Harvest-Now-Decrypt-Later} (HNDL) attacks .
+
+\textbf{Expert forecasts.} The 2024 Global Risk Institute survey of 32
+quantum-hardware experts gives a median estimate of 11--15 years for a
+CRQC able to break RSA-2048, but with a heavy tail of earlier arrivals .
+Gidney \& Ekerå's resource estimate (20 million noisy qubits, 8 hours)
+and subsequent error-correction progress validate that such a machine is
+an engineering---rather than scientific---challenge . Because these
+forecasts shift annually, the methodology demands continuous refresh of
+\emph{T­­threat}.
+
+\textbf{Standards landscape.} In August 2024 NIST issued the first three
+Federal Information Processing Standards: FIPS 203 (ML-KEM / Kyber),
+FIPS 204 (ML-DSA / Dilithium) and FIPS 205 (SPHINCS+) . Forthcoming FIPS
+206 (BIKE) and ISO/ETSI profiles will refine parameter sets, but the
+decision rule is already clear: design choices should default to these
+lattice- or hash-based schemes unless an explicit profile (IoT,
+constrained, statutory) dictates otherwise.
+
+\subsection{6.3 Design principles}\label{design-principles}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Crypto-agility first.} Because algorithm lifetimes are
+  uncertain, architectures must allow hot-swapping of primitives without
+  forklift upgrades .
+\item
+  \textbf{Inventory before surgery.} Every migration failure studied by
+  TNO traced back to an incomplete asset list; hence inventory is a
+  non-negotiable gate .
+\item
+  \textbf{Hybrid ≥ single-stack.} Where performance permits, run
+  lattice-based KEMs or signatures \emph{alongside} existing ECC/RSA
+  until the latter can be fully retired. ETSI/IETF interop plug-tests
+  show this halves rollback risk .
+\item
+  \textbf{Evidence over assertion.} Each stage outputs machine-readable
+  artefacts---CBOMs, risk scores, migration run-books---that auditors
+  and regulators can parse automatically.
+\end{enumerate}
+
+\subsection{6.4 Lifecycle phases}\label{lifecycle-phases}
+
+\subsubsection{6.4.1 Phase 0 -- Programme
+mobilisation}\label{phase-0-programme-mobilisation}
+
+Although not counted among the five PAREK stages, a short mobilisation
+sprint (4--6 weeks) is advisable to assign roles, secure budget and
+ratify the scope statements defined in §3.
+
+\subsubsection{6.4.2 Phase 1 -- Cryptographic discovery \& inventory
+(``P'' in
+PAREK)}\label{phase-1-cryptographic-discovery-inventory-p-in-parek}
+
+\textbf{Objective.} Build a \emph{single source of truth} describing
+every algorithm, key, certificate, protocol, hardware module and
+crypto-library instance.
+
+\textbf{Process.}
+
+\begin{itemize}
+\tightlist
+\item
+  Crawl binaries and source trees with pattern-matching and
+  dynamic-analysis tools.
+\item
+  Enrich findings with network captures and certificate-transparency
+  logs.
+\item
+  Normalise results into a \textbf{Cryptography Bill of Materials
+  (CBOM)}---an extension of CycloneDX 1.6---which supports
+  \textgreater20 asset types (algorithm, protocol, key, seed, nonce,
+  etc.) .
+\item
+  Link CBOMs back to software SBOMs via \emph{bom-link} URNs so each
+  application instance can be traced to its crypto footprint .
+\end{itemize}
+
+\textbf{Output artefacts.}
+
+\begin{itemize}
+\tightlist
+\item
+  CBOM JSON (one per application or shared library)
+\item
+  Discovery tooling report with false-positive triage
+\item
+  Gap register listing unscanned networks or black-box third-party
+  services
+\end{itemize}
+
+\subsubsection{6.4.3 Phase 2 -- Quantum risk assessment
+(``A'')}\label{phase-2-quantum-risk-assessment-a}
+
+\textbf{Objective.} Quantify urgency and migration difficulty, then
+classify systems into EU ``high / medium / low'' buckets.
+
+\textbf{Scoring model.} Extend Mosca's inequality into a composite
+\emph{Quantum-Adjusted Risk Score (QARS)}:
+
+\begin{verbatim}
+QARS = w1·(T_shelf-life / T_threat) + w2·(Migration_Cost / CapEx_Budget)
+      + w3·(Data_Sensitivity) + w4·(Exposure_Surface)
+\end{verbatim}
+
+where weights \emph{w1--w4} are calibrated by sector regulators. TNO's
+handbook suggests default weightings of 0.35 / 0.25 / 0.25 / 0.15 after
+pilot workshops .
+
+\textbf{Scientific reference.} Mosca \& Mulholland's original risk
+methodology underpins the formula and justifies linear aggregation of
+shelf-life and migration vectors .
+
+\textbf{Output artefacts.}
+
+\begin{itemize}
+\tightlist
+\item
+  Per-system risk dossier (QARS, assumptions, reviewer sign-off)
+\item
+  Heat-map dashboard for C-suite and board reporting
+\end{itemize}
+
+\subsubsection{6.4.4 Phase 3 -- Road-mapping \& readiness planning
+(``R'')}\label{phase-3-road-mapping-readiness-planning-r}
+
+\textbf{Objective.} Translate scores into dated, budgeted work-packages
+aligned with EU milestones.
+
+\textbf{Steps.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Prioritise} systems with QARS ≥ 0.65 for immediate pilot
+  migrations.
+\item
+  \textbf{Allocate buffer time} for external dependencies (e.g.,
+  hardware security modules awaiting FIPS 203 validation).
+\item
+  \textbf{Sequence pilots} to maximise knowledge reuse---start with a
+  low-volume API gateway, then propagate the playbook to high-volume
+  payment stacks.
+\item
+  \textbf{Integrate supplier clauses} requiring CBOM delivery and
+  PQC-ready firmware by 2028 for high-risk contracts .
+\end{enumerate}
+
+\textbf{Output artefacts.}
+
+\begin{itemize}
+\tightlist
+\item
+  Gantt chart or kanban milestones
+\item
+  Budget breakdown: licences, hardware refresh, training, contingency
+\item
+  Contract addenda language for suppliers
+\end{itemize}
+
+\subsubsection{6.4.5 Phase 4 -- Execution \& migration
+(``E'')}\label{phase-4-execution-migration-e}
+
+\textbf{Objective.} Replace---or wrap in hybrid mode---all
+quantum-vulnerable primitives, while preserving service levels.
+
+\textbf{Preferred migration patterns (scientific rationale in
+brackets):}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Kyber-in-TLS 1.3 hybrid KEM:} Adds \textless2 kB to handshake;
+  end-to-end field results show negligible latency increase at sub-10 ms
+  RTT .
+\item
+  \textbf{Dilithium signatures for code signing:} Larger certificates
+  (\textasciitilde14 kB) but verified 100× faster than SPHINCS+, making
+  it fit for CI/CD pipelines.
+\item
+  \textbf{SPHINCS+ for long-life artefacts (firmware, legal archives):}
+  Stateless hash-based design offers security with minimal cryptanalysis
+  uncertainty.
+\item
+  \textbf{Double-wrap archives:} Encrypt once with AES-256-GCM, then
+  wrap the symmetric key via Kyber or BIKE to separate confidentiality
+  from PQC adoption pace.
+\end{itemize}
+
+\textbf{Change-control safeguards.} Each rollout includes a
+cryptographic \emph{canary test}, real-time telemetry on handshake
+success rates, and a rollback plan tied to traffic shadowing.
+
+\textbf{Output artefacts.}
+
+\begin{itemize}
+\tightlist
+\item
+  Migration run-books and playbooks per platform
+\item
+  Performance-impact report versus baseline
+\item
+  Certificate revocation \& renewal schedule
+\end{itemize}
+
+\subsubsection{6.4.6 Phase 5 -- Key-governance \& continuous improvement
+(``K'')}\label{phase-5-key-governance-continuous-improvement-k}
+
+\textbf{Objective.} Ensure that once migrated, systems stay
+quantum-resilient---even as algorithms evolve or new vulnerabilities
+surface.
+
+\textbf{Controls.}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Continuous CBOM scanning:} Weekly delta scans detect drift;
+  policy engines flag any newly imported RSA/ECC library versions .
+\item
+  \textbf{Policy attestation via CycloneDX Attestations:} Suppliers
+  attach machine-readable claims linking binaries to NIST/FIPS
+  conformity, automating compliance checks .
+\item
+  \textbf{Crypto-agility playbooks:} Design patterns
+  (algorithm-independent keystores, versioned protocol negotiation,
+  feature flags) enable hot re-parametrisation---a requirement
+  emphasised by NCSC-NL and echoed in TNO Step 4.4 .
+\item
+  \textbf{Metric suite:} Mean Time To Remediate Weak Crypto (MTTR-C), \%
+  assets with valid CBOM, \% PQC certificates in production. These feed
+  into ENISA reporting and, under NIS-2, into supervisory audits.
+\end{itemize}
+
+\subsection{6.5 Embedding the methodology in EU
+governance}\label{embedding-the-methodology-in-eu-governance}
+
+Member States' NIS Cooperation Group work-stream recommends each
+national roadmap publish quarterly status against the core measures
+above and contribute pilot results to the EU testing infrastructure . By
+harmonising metrics and artefacts (CBOM JSON, QARS spreadsheets, FIPS
+certificate IDs), the methodology enables cross-border comparability and
+pooled threat-intelligence.
+
+\subsection{6.6 Limitations and future
+research}\label{limitations-and-future-research}
+
+While lattice-based KEMs currently lead standardisation, code-based
+(Classic McEliece) and isogeny-based (SIKE-like) schemes deserve niche
+consideration; the methodology therefore reserves an \emph{Experimental
+Track} for low-volume prototypes. The scientific community is still
+refining fault-tolerance thresholds---e.g., the debate around
+``dynamic-logical qubits'' may shift T­­threat earlier or later.
+Organisations must budget for annual model recalibration as these
+estimates mature.
+
+\subsection{6.7 Conclusion}\label{conclusion}
+
+This PQC Methodology equips EU organisations with a science-grounded,
+regulator-aligned and audit-ready pathway from cryptographic discovery
+to long-term quantum resilience. By anchoring every decision in
+measurable artefacts---CBOMs, risk scores, migration run-books---and
+iterating through the PAREK lifecycle, enterprises can defend today's
+and tomorrow's data against the quantum horizon.
+
+\section{7 Framework Overview}\label{framework-overview}
+
+\begin{quote}
+\textbf{Purpose of this chapter} -- give readers a \emph{one‑stop}
+visual and narrative tour of the PAREK Framework, explaining how its
+five stages interlock, what artefacts they exchange, and how the cycle
+repeats to deliver continuous crypto‑agility.
+\end{quote}
+
+\subsection{7.1 At‑a‑glance diagram}\label{ataglance-diagram}
+
+\begin{verbatim}
+┌────────┐   Discover     ┌─────────────┐   Quantify     ┌───────────┐   Plan     ┌─────────┐  Deploy     ┌────────────┐  Monitor
+│   P    │──────────────►│      A      │──────────────►│     R     │──────────►│    E    │────────────►│      K     │──┐
+│ Asset  │   CBOM JSON    │  Risk Score │   QARS heatmap │ Road‑map  │  Gantt      │ Migration│  Telemetry   │  Metrics   │  │
+│  Inv   │◄──────────────│             │◄──────────────│           │◄──────────│          │◄────────────│           │◄─┘
+└────────┘   Gaps & todo   └─────────────┘   Feedback     └───────────┘  Budget     └─────────┘  Incidents   └────────────┘
+\end{verbatim}
+
+\emph{Figure\,1\,--\,PAREK Framework life‑cycle (high‑level data flow)}
+
+\subsection{7.2 Stage synopses}\label{stage-synopses}
+
+\subsubsection{\texorpdfstring{7.2.1 \textbf{P~-- Post‑Quantum Asset \&
+Algorithm
+Inventory}}{7.2.1 P~-- Post‑Quantum Asset \& Algorithm Inventory}}\label{p-postquantum-asset-algorithm-inventory}
+
+\emph{Goal} -- create a machine‑readable \textbf{Cryptography Bill of
+Materials (CBOM)} for every software, hardware and service component.
+Uses automated scanners, manual surveys and supplier attestations.
+Output feeds directly into Stage~A.
+
+\subsubsection{\texorpdfstring{7.2.2 \textbf{A~-- Assessment of Quantum
+Risk}}{7.2.2 A~-- Assessment of Quantum Risk}}\label{a-assessment-of-quantum-risk}
+
+\emph{Goal} -- compute a \textbf{Quantum‑Adjusted Risk Score (QARS)} for
+each asset by blending data shelf‑life, migration effort and CRQC
+timeline inputs. High‑risk items graduate to Stage~R while low‑risk
+items loop back for periodic re‑assessment.
+
+\subsubsection{\texorpdfstring{7.2.3 \textbf{R~-- Road‑mapping \&
+Readiness
+Planning}}{7.2.3 R~-- Road‑mapping \& Readiness Planning}}\label{r-roadmapping-readiness-planning}
+
+\emph{Goal} -- translate scores into a time‑phased, resourced roadmap
+aligned to EU milestones (2026‑2035). Outputs Gantt charts, budget
+forecasts, and supplier alignment plans. Detailed in §10.
+
+\subsubsection{\texorpdfstring{7.2.4 \textbf{E~-- Execution \&
+Migration}}{7.2.4 E~-- Execution \& Migration}}\label{e-execution-migration}
+
+\emph{Goal} -- deploy PQC or hybrid primitives using controlled
+roll‑outs, rollback strategies and performance monitoring. Produces
+migration run‑books and incident telemetry.
+
+\subsubsection{\texorpdfstring{7.2.5 \textbf{K~-- Key‑Governance \&
+Continuous
+Improvement}}{7.2.5 K~-- Key‑Governance \& Continuous Improvement}}\label{k-keygovernance-continuous-improvement}
+
+\emph{Goal} -- sustain crypto‑agility through continuous scanning,
+supplier attestations, KPIs and policy refreshes. Feeds new discoveries
+back to Stage~P, closing the loop.
+
+\subsection{7.3 Artefact hand‑offs}\label{artefact-handoffs}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0900}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3800}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2100}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3200}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+From ▶ To
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Artefact
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Format
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Purpose
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+P ▶ A & CBOMs (per system) & CycloneDX~JSON + sig & Input for risk
+scoring \\
+A ▶ R & QARS risk registry & CSV / Grafana feed & Prioritise backlog \\
+R ▶ E & Work‑package definitions & Jira Epics~+ Stories & Guide
+migration teams \\
+E ▶ K & Deployment telemetry, incident reports & Prometheus / GRC logs &
+Measure success, trigger alerts \\
+K ▶ P & Revised asset list, KPIs & JSON diff, dashboard & Refresh
+inventory \& repeat cycle \\
+\end{longtable}
+
+\subsection{7.4 Governance layers}\label{governance-layers}
+
+\subsubsection{7.4.1 Strategic layer}\label{strategic-layer}
+
+\emph{PAREK Steering Committee} (quarterly) endorses roadmaps, budget,
+and policy changes.
+
+\subsubsection{7.4.2 Operational layer}\label{operational-layer}
+
+\emph{Crypto Working Group} (monthly) coordinates cross‑team
+dependencies, tooling upgrades and incident response.
+
+\subsubsection{7.4.3 Tactical layer}\label{tactical-layer}
+
+Dedicated \emph{Migration Squads} execute Jira stories, report blockers
+and feed metrics to dashboards.
+
+\subsection{7.5 Alignment with PQC Methodology
+(§6)}\label{alignment-with-pqc-methodology-6}
+
+Section~6 introduces the
+\textbf{discover\,→\,assess\,→\,plan\,→\,execute\,→\,improve} cycle at
+conceptual level. This chapter grounds that abstract model in concrete
+artefacts, roles and data flows, forming the \emph{Rosetta Stone} that
+maps theory to practice.
+
+Key alignment points:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Inventory before surgery} principle manifests as the strict P
+  ▶ A gate.
+\item
+  \textbf{Crypto‑agility first} translates into K~metrics (\# low‑risk
+  ECDSA certs trending~→~0).
+\end{itemize}
+
+\subsection{7.6 Integration with supply‑chain
+(§13)}\label{integration-with-supplychain-13}
+
+Supplier CBOMs are imported into Stage~P; supplier roadmaps and
+compliance clauses sit in Stage~R; supplier attestation SLAs are
+monitored in Stage~K. Thus, the framework treats third‑party components
+as \emph{co‑equal citizens} in the life‑cycle.
+
+\subsection{7.7 Quality gates \& escalation
+paths}\label{quality-gates-escalation-paths}
+
+\begin{verbatim}
+[Gate G1] CBOM coverage ≥ 95 % —► proceed to Stage A  | else: raise Inventory CAPA
+[Gate G2] QARS sign‑off by CISO —► proceed to Stage R  | else: re‑score anomalies
+[Gate G3] Budget approval —► proceed to Stage E        | else: escalate to CFO
+[Gate G4] KPI trend green 3 months —► close loop       | else: open incident review
+\end{verbatim}
+
+Each gate has an \emph{owner}, \emph{entry criteria} and \emph{exit
+criteria}, ensuring accountability.
+
+\subsection{7.8 Toolchain reference
+stack}\label{toolchain-reference-stack}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0633}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4937}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4430}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Stage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Open‑source baseline tools
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Commercial alternatives
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+P & \textbf{oqs‑scanner}, \texttt{cyclonedx‑python‑lib} & Venafi TLS
+Protect, Fortanix DSM \\
+A & \texttt{pandas~+~risk‑calc.py} & RSA Archer, ServiceNow VRM \\
+R & \texttt{ganttlab}, GitLab Road‑maps & Atlassian Advanced Roadmaps \\
+E & \texttt{openssl‑oqs}, QEMU testbed & Entrust nShield, Thales
+CipherTrust \\
+K & Grafana, Prometheus & Splunk ES, Elastic SIEM \\
+\end{longtable}
+
+A Terraform module (\texttt{scripts/terraform/parek‑stack.tf})
+provisions the open‑source stack for pilots.
+
+\subsection{7.9 Maturity model}\label{maturity-model}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2105}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5053}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2842}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Level
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Characteristics
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Typical KPI values
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{1 -- Ad~hoc} & No CBOM, PQC unknown, vendors unmanaged &
+SC‑1~\textless\,10\,\% \\
+\textbf{2 -- Defined} & Static inventory, pilot QARS, roadmap draft &
+SC‑1≈50\,\%, QARS~cov.~≥\,30\,\% \\
+\textbf{3 -- Managed} & Approved roadmap, hybrid pilots in prod &
+SC‑1≥90\,\%, KPI trend ↑ \\
+\textbf{4 -- Quantitative} & Real‑time metrics, full PQC for high‑risk
+assets & KPI SLA ≤\,5\,\% viol. \\
+\textbf{5 -- Optimising} & Continuous crypto‑agility, auto‑rotation &
+Zero unsupported algs \\
+\end{longtable}
+
+Stage~K owns the maturity assessment and reports progression each
+quarter.
+
+\subsection{7.10 Next steps for readers}\label{next-steps-for-readers}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Architects} -- dive into §8--12 for deep‑dive guidance per
+  stage.
+\item
+  \textbf{Project managers} -- reference §10 for detailed timelines and
+  resource models.
+\item
+  \textbf{Suppliers} -- jump to §13 for contract clauses and CBOM spec
+  requirements.
+\end{itemize}
+
+\section{8 P -- Post‑Quantum Asset \& Algorithm
+Inventory}\label{p-postquantum-asset-algorithm-inventory-1}
+
+\begin{quote}
+\textbf{Purpose} -- provide a succinct overview of how to catalogue all
+cryptographic assets and algorithms so that subsequent risk scoring
+(Stage~A) is based on complete, reliable data. This short version is
+intended as a quick‑start guide; a full procedural manual will follow in
+v0.2.
+\end{quote}
+
+\subsection{8.1 What is a CBOM?}\label{what-is-a-cbom}
+
+A \textbf{Cryptography Bill of Materials (CBOM)} is a machine‑readable
+inventory (CycloneDX JSON) listing every algorithm, key, certificate,
+protocol and crypto‑module used by a software, hardware or service
+component. Think of it as an SBOM for cryptography.
+
+\subsection{8.2 Minimal discovery
+workflow}\label{minimal-discovery-workflow}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0635}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4762}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3651}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0952}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Step
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Tool / Source
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Output
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Binary \& source code scan & \texttt{oqs‑scanner}, regex & Algorithm
+list \\
+2 & Network traffic sampling & Zeek, Wireshark & Cipher‑suite map \\
+3 & Certificate inventory & CT~logs, PKI DB & x509 dump \\
+4 & Supplier CBOM ingest & API / S3 / email (§13) & External JSON \\
+5 & Manual survey for edge assets & Google~Forms & Gap register \\
+\end{longtable}
+
+Run steps 1--4 in parallel; perform step~5 only if coverage
+\textless\,95\,\%.
+
+\subsection{8.3 Essential data fields}\label{essential-data-fields}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{algorithm} -- e.g., \texttt{rsa2048}, \texttt{ml‑kem‑768}\\
+\item
+  \texttt{context} -- \texttt{tls1.3}, \texttt{ssh2}, \texttt{jwt}\\
+\item
+  \texttt{keySize} / \texttt{parameterSet}\\
+\item
+  \texttt{usage} -- signing, encryption, key agreement\\
+\item
+  \texttt{expires} -- ISO~date for certificates/keys\\
+\item
+  \texttt{hardwareAnchor} -- HSM/TPM model + firmware
+\end{enumerate}
+
+Include a \texttt{scanTimestamp} and digital signature
+(\texttt{*.cbom.sig}).
+
+\subsection{8.4 Quality gate G1 (inventory
+lock)}\label{quality-gate-g1-inventory-lock}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Metric} -- \% assets with valid CBOM ≥\,95\,\%.
+\item
+  \textbf{Owner} -- Asset‑Inventory Lead.
+\item
+  \textbf{Tool} -- Grafana dashboard \texttt{CBOM‑coverage}.
+\end{itemize}
+
+If coverage \textless\,95\,\%, raise Corrective Action Plan and block
+Stage~A.
+
+\subsection{8.5 Outputs}\label{outputs}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{CBOM repository} -- \texttt{git@repo:cbom/} with one JSON per
+  system.
+\item
+  \textbf{Gap register} -- CSV of unscanned or unknown assets.
+\item
+  \textbf{Coverage dashboard} -- auto‑refreshed via Prometheus.
+\end{itemize}
+
+\subsection{8.6 Common pitfalls}\label{common-pitfalls}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Duplicate asset IDs} -- enforce UUID naming.
+\item
+  \textbf{Missing hardware mapping} -- integrate CMDB export.
+\item
+  \textbf{Supplier lag} -- tie CBOM submission to invoice milestone.
+\end{enumerate}
+
+\subsection{8.7 Next steps}\label{next-steps}
+
+Once G1 is passed, hand off the consolidated CBOM set to Stage~A for
+QARS calculation. Retain automated nightly scans to catch drift.
+
+\section{9 A -- Assessment of Quantum
+Risk}\label{a-assessment-of-quantum-risk-1}
+
+\begin{quote}
+\textbf{Purpose of this chapter} -- define a repeatable, data‑driven
+methodology for quantifying how urgently each system, data set or
+supplier must migrate to post‑quantum cryptography. The output of this
+stage---\textbf{Quantum‑Adjusted Risk Scores (QARS)}---feeds
+Road‑mapping (§10) and underpins budget and resource prioritisation.
+\end{quote}
+
+\subsection{9.1 Why risk scoring
+matters}\label{why-risk-scoring-matters}
+
+Cryptographic migration budgets are finite, systems are heterogeneous,
+and CRQC timelines are uncertain. A robust risk model ensures that
+\emph{business‑critical, long‑lived} data is protected first, while
+low‑impact assets follow a just‑in‑time trajectory. Without
+quantification, organisations either under‑invest (and face
+data‑exposure liability) or over‑invest (and stall other security
+priorities). The QARS model harmonises quantitative (years, euros,
+CVSS‑scores) and qualitative (business impact, regulatory penalty)
+inputs into a single comparable metric.
+
+\subsection{9.2 Inputs and
+prerequisites}\label{inputs-and-prerequisites}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4868}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3158}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1974}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Input
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Source
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Refresh cadence
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Cryptography Bill of Materials (CBOM) & Stage~P (§8) & Nightly \\
+Data‑classification registry & GDPR/NIS‑2 policy owners & Quarterly \\
+CRQC threat horizon (\texttt{T\_threat}) & §5 + external forecasts &
+Annual + ad~hoc \\
+Migration effort estimates & Architecture \& dev‑ops & Sprintly \\
+Exposure Surface Index (ESI) & Pentest/vuln‑scan teams & Monthly \\
+\end{longtable}
+
+If any CBOM asset lacks a data‑classification tag or migration estimate,
+it is flagged ``information incomplete'' and cannot be scored until gaps
+are resolved.
+
+\subsection{9.3 The QARS formula}\label{the-qars-formula}
+
+PAREK extends Mosca's inequality into a \textbf{multi‑factor linear
+model}:
+
+\begin{verbatim}
+QARS = w₁·(T_shelf / T_threat) + w₂·(T_migration / T_buffer) + w₃·Data_Sensitivity +
+       w₄·Exposure_Surface + w₅·Compliance_Penalty
+\end{verbatim}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2857}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.6429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0714}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Symbol
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Explanation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Scale
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{T\_shelf} & Required confidentiality window (years) & 0--25+ \\
+\texttt{T\_threat} & Forecast years until CRQC (default~=~9--15) &
+0--20 \\
+\texttt{T\_migration} & Estimated time to complete PQC rollout (yrs) &
+0--5 \\
+\texttt{T\_buffer} & Policy‑set buffer (yrs, default~=~2) & fixed \\
+\texttt{Data\_Sensitivity} & GDPR Level~1‑3 or internal A‑E scale &
+0.1‑1 \\
+\texttt{Exposure\_Surface} & Normalised count of public endpoints \&
+CVEs & 0‑1 \\
+\texttt{Compliance\_Penalty} & 0.2 if asset falls under NIS‑2 critical
+infra & 0/0.2 \\
+\end{longtable}
+
+Weights \texttt{w₁…w₅} default to
+\textbf{0.30\,/\,0.20\,/\,0.25\,/\,0.15\,/\,0.10} but can be re‑tuned at
+sector level (e.g., finance may increase sensitivity weight to 0.35).
+QARS outputs a \textbf{unitless value between 0 and 1} where
+≥\,0.65~=~\emph{high}, 0.35--0.64~=~\emph{medium},
+\textless\,0.35~=~\emph{low}.
+
+\subsection{9.4 Data‑collection pipeline}\label{datacollection-pipeline}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Ingest} -- nightly ETL job pulls CBOM JSON, joins CMDB IDs,
+  merges data‑classification tags.
+\item
+  \textbf{Enrich} -- scrape CVE feeds (NVD) to calculate Exposure
+  Surface Index for IP addresses/certs.
+\item
+  \textbf{Estimate} -- dev‑ops provides story‑point‑based migration
+  effort which converts to months via team velocity.
+\item
+  \textbf{Compute} -- Python microservice
+  (\texttt{scripts/qars\_calc.py}) applies formula; outputs per‑asset
+  records to Postgres and Grafana.
+\item
+  \textbf{Validate} -- security architects review anomalies (e.g.,
+  QARS\,\textgreater\,0.9 for ``low'' data system) via Jira workflow.
+\end{enumerate}
+
+All stages run in a dedicated Kubernetes namespace with signed container
+images; audit logs export to Splunk for regulator access.
+
+\subsection{9.5 Visualising risk}\label{visualising-risk}
+
+Default dashboards include:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Heat‑map} -- assets on x‑axis (systems) vs.~y‑axis (QARS);
+  colour gradient highlights urgency.
+\item
+  \textbf{Scatter} -- \texttt{T\_shelf} on x, \texttt{T\_migration} on
+  y; diagonal line shows Mosca boundary.
+\item
+  \textbf{Burndown} -- number of high‑risk assets over time; target
+  trend~=~zero by Q4~2030.
+\end{itemize}
+
+Grafana JSON for these panels is stored under
+\texttt{assets/grafana/qars\_dash.json}.
+
+\subsection{9.6 Quality gate G2 -- QARS
+sign‑off}\label{quality-gate-g2-qars-signoff}
+
+Before Stage~R can commence, the CISO (or delegate) must approve:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Coverage} -- ≥\,90\,\% of in‑scope assets have non‑null QARS.
+\item
+  \textbf{Accuracy} -- sample audit (10\,\%) shows \textless\,5\,\%
+  variance between estimated and observed parameters.
+\item
+  \textbf{Documentation} -- methodology, weight settings, data sources
+  captured in Confluence page \texttt{PQC/Risk‑Method}.
+\end{enumerate}
+
+Failure to meet criteria pauses migration planning; corrective actions
+logged in the \emph{Risk Management} Jira project.
+
+\subsection{9.7 Scenario analysis}\label{scenario-analysis}
+
+PAREK requires bi‑annual \textbf{scenario runs} to test sensitivity:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1856}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2165}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2474}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3505}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Scenario ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\texttt{T\_threat} assumption
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Outcome metric
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Implication
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{S‑A (Fast)} & 5~yrs (2029) & ΔHigh‑risk assets~+~35\,\% & Budget
+re‑prioritisation needed \\
+\textbf{S‑B (Baseline)} & Median 9~yrs (2034) & n/a & Reference
+roadmap \\
+\textbf{S‑C (Delayed)} & 15~yrs (2040) & ΔBudget~--~18\,\% & Optional
+slow‑track for low assets \\
+\end{longtable}
+
+Results feed the CFO's risk‑adjusted cost model; Stage~10 picks
+whichever roadmap keeps high‑risk completion \textless=~3\,yrs before
+\texttt{T\_threat}.
+
+\subsection{9.8 Integration with supplier
+risk}\label{integration-with-supplier-risk}
+
+Supplier CBOMs (Tier~1 \&~2) receive QARS as well. Additional factor
+\texttt{Supplier\_Maturity} (scale~0--0.2) reduces QARS if vendor
+demonstrates crypto‑agility lab results. Non‑compliant suppliers
+auto‑escalate to \emph{Supplier Risk Queue} (§13) and may face contract
+penalties.
+
+\subsection{9.9 Common pitfalls \& mitigations
+(≈\,100~words)}\label{common-pitfalls-mitigations-100-words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Stale data} -- automate nightly refresh; raise alert if CBOM
+  timestamp \textgreater\,7~days.
+\item
+  \textbf{Weight gaming} -- lock weights quarter‑by‑quarter; require
+  Steering approval for changes.
+\item
+  \textbf{False precision} -- present score bands (high/med/low) to
+  execs, not raw decimals.
+\item
+  \textbf{Blind spots} -- add ``Unknown'' category and track reduction
+  KPI.
+\end{enumerate}
+
+\subsection{9.10 Outputs}\label{outputs-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{risk\_registry.csv} -- asset‑level QARS, drivers, timestamp.
+\item
+  Grafana dashboard -- URL \texttt{/d/qars/quantum‑risk}.
+\item
+  Executive slide deck template
+  (\texttt{assets/templates/qars‑brief.pptx}).
+\end{itemize}
+
+\subsection{9.11 Next steps}\label{next-steps-1}
+
+Hand off risk‑registry to Stage~R for roadmap planning. Schedule next
+scenario analysis within 6~months or sooner if IBM announces ≥\,1\,M
+qubits.
+
+\subsection{9.12 References}\label{references-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Mosca, M. (2023). \emph{Risk Framework for Quantum Threats}.
+\item
+  Global Risk Institute (2024). \emph{Quantum Threat Timeline Report}.
+\item
+  ENISA (2024). \emph{Good Practices for Supply‑chain Risk Management}.
+\item
+  NIST (2024). \emph{Post‑Quantum Cryptography FIPS~203‑205}.
+\item
+  IBM (2025). \emph{Quantum Roadmap}.
+\end{enumerate}
+
+\section{10 R~--~Road‑mapping~\& Readiness
+Planning}\label{r-roadmapping-readiness-planning-1}
+
+\begin{quote}
+\textbf{Purpose of this chapter} -- translate the quantitative urgency
+produced in \emph{§9~Assessment of Quantum Risk} into a resourced, dated
+and regulator‑aligned action plan that will deliver quantum resilience
+across the organisation's entire technology estate.
+\end{quote}
+
+\subsection{10.1~~Scope and positioning}\label{scope-and-positioning}
+
+Road‑mapping and readiness planning (the \textbf{R} in \emph{P‑A‑R‑E‑K})
+is the linchpin phase that turns analytical findings into concrete,
+executive‑approved commitments. It spans three macro tasks:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Prioritise} -- decide which systems, business services and
+  supply‑chain partners move first, based on QARS scores, EU risk
+  categories and practical constraints;
+\item
+  \textbf{Plan} -- build a realistic programme schedule with phased
+  deployments, governance checkpoints and budget allocations; and
+\item
+  \textbf{Prepare} -- ensure that people, processes and technology are
+  in place when execution starts (tooling, contracts, training, fallback
+  strategies).
+\end{enumerate}
+
+The output is a \emph{single authoritative roadmap} that boards,
+regulators and suppliers can cite. Without it, migration efforts
+splinter into ad hoc projects that stall or overrun.
+
+\subsection{10.2~~Key inputs}\label{key-inputs}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2564}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4103}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Artefact
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Source section
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{CBOM inventory} & §8 & Machine‑readable list of algorithms, keys
+and protocols per system \\
+\textbf{QARS scores} & §9 & Composite urgency rating (0--1) per
+system/service \\
+\textbf{EU roadmap milestones} & External & 2026 early pilots, 2030
+high‑risk cut‑over, 2035 medium‑risk completion \\
+\textbf{Budget envelope} & CFO & Multi‑year capital \& operational
+funding ceiling \\
+\textbf{Resource capacity} & HR / PMO & Available FTEs, external
+consultants, supplier bandwidth \\
+\end{longtable}
+
+\subsection{10.3~~Process overview}\label{process-overview}
+
+\begin{verbatim}
+┌───────────────┐   1   ┌──────────────────┐     2     ┌────────────────┐   3   ┌──────────────────┐
+│  Risk & Asset │──►──►│  Prioritisation  │───►───►──►│  Road‑map Plan  │──►──►│   Readiness Set   │
+│   Intelligence│       └──────────────────┘           └────────────────┘       └──────────────────┘
+    (§8 & §9)             (10.4)                           (10.5)                   (10.6)
+\end{verbatim}
+
+Each arrow represents a \emph{quality gate} -- the roadmap cannot
+progress until the preceding artefacts are baseline‑approved.
+
+\subsection{10.4~~Step~1~~Prioritisation
+(4\,weeks)}\label{step-1-prioritisation-4-weeks}
+
+The goal is an \textbf{ordered backlog} of migration work‑packages.
+
+\subsubsection{10.4.1~~Segmentation}\label{segmentation}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Risk bucket} -- map QARS ≥\,0.65 to \emph{high}, 0.35--0.64 to
+  \emph{medium}, \textless\,0.35 to \emph{low}.
+\item
+  \textbf{Business criticality} -- overlay impact tiers
+  (mission‑critical, regulatory, customer‑facing, internal).
+\item
+  \textbf{Dependency heat‑map} -- identify technical couplings (shared
+  crypto libraries, common PKI roots, hardware modules).
+\end{itemize}
+
+\subsubsection{10.4.2~~Scoring matrix}\label{scoring-matrix}
+
+Create a \emph{Prioritisation Index (PI)} =
+\texttt{w\_risk\ ×\ QARS\ +\ w\_imp\ ×\ Impact\ +\ w\_dep\ ×\ Coupling}.
+Default weights 0.4 / 0.4 / 0.2 can be tuned in steering committee.
+
+\subsubsection{10.4.3~~Pilot selection}\label{pilot-selection}
+
+Select at least one representative workload in each domain (web, mobile,
+embedded, data‑at‑rest) to validate migration playbooks. Early pilots
+should have: * ≤\,10\,k TPS (to limit blast radius) * Dedicated dev‑ops
+pipeline for rapid iteration * Supportive product owner
+
+\subsection{10.5~~Step~2~~Road‑map planning
+(6\,weeks)}\label{step-2-roadmap-planning-6-weeks}
+
+This step converts the ordered backlog into a \textbf{multi‑year,
+resource‑levelled Gantt}.
+
+\subsubsection{10.5.1~~Timeline alignment}\label{timeline-alignment}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2558}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2558}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3256}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1628}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Milestone
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+EU target
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Local target
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Notes
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Inventory baseline} & 2026‑03‑31 & 2026‑03‑15 & lock CBOM
+scope \\
+\textbf{Pilot migrations live} & 2026‑12‑31 & 2026‑11‑30 & include
+telemetry \& rollback \\
+\textbf{High‑risk systems PQC‑ready} & 2030‑12‑31 & 2030‑06‑30 & 6‑month
+buffer for audit \\
+\textbf{Medium‑risk systems PQC‑ready} & 2035‑12‑31 & 2035‑06‑30 &
+contingent buffer \\
+\end{longtable}
+
+\begin{quote}
+\emph{Rationale} -- buffer dates absorb supplier slippage, new standard
+releases (FIPS~206, ISO/ETSI), or geopolitical disruptions.
+\end{quote}
+
+\subsubsection{10.5.2~~Work‑package design}\label{workpackage-design}
+
+Break down migrations into \textbf{Epics} (e.g., \emph{TLS~Stack
+Upgrade}) and \textbf{Stories} (e.g., \emph{enable hybrid Kyber in nginx
+1.25}). Attach: * Definition of Done (test cases, security sign‑off) *
+Estimated story points \& duration * Owner team and SME reviewers
+
+\subsubsection{10.5.3~~Capacity \& cost
+modelling}\label{capacity-cost-modelling}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{FTE mapping} -- match story points to sprint velocity.
+\item
+  \textbf{External spend} -- licences, new HSMs, PKI vouchers, test‑bed
+  cloud costs.
+\item
+  \textbf{Contingency reserve} -- 15\,\% of total CapEx based on Monte
+  Carlo simulation of schedule risk.
+\end{itemize}
+
+\subsubsection{10.5.4~~Governance calendar}\label{governance-calendar}
+
+Publish quarterly steering reviews and monthly working‑group
+checkpoints. Each high‑risk migration has a \emph{go/no‑go gate} with
+rollback cut‑off defined.
+
+\subsection{10.6~~Step~3~~Readiness preparation
+(ongoing)}\label{step-3-readiness-preparation-ongoing}
+
+\subsubsection{10.6.1~~Supplier alignment}\label{supplier-alignment}
+
+\begin{itemize}
+\tightlist
+\item
+  Embed \emph{PQC‑ready clause} requiring CBOM + SPDX attestation with
+  FIPS‑cert IDs by 2028.
+\item
+  Incentivise via payment milestones -- 10\,\% retainage until PQC
+  compliance confirmed.
+\end{itemize}
+
+\subsubsection{10.6.2~~Toolchain hardening}\label{toolchain-hardening}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Tool category
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Minimum capability
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{CI/CD scanner} & Detect lattice or hash‑based algorithm support,
+block RSA‑2048 certs \\
+\textbf{Traffic analyser} & Real‑time handshake cipher suite
+telemetry \\
+\textbf{HSM firmware} & Supports ML‑KEM‑768, ML‑DSA‑5, hybrid
+wrapping \\
+\end{longtable}
+
+\subsubsection{10.6.3~~Skills uplift}\label{skills-uplift}
+
+Deliver a role‑based training matrix: * \textbf{Dev‑ops} -- PQC
+libraries, hybrid handshake patterns (2‑day workshop) * \textbf{IT Ops}
+-- firmware‑signing, key rotation (1‑day lab) * \textbf{Risk officers}
+-- QARS methodology, reporting dashboard (webinar + playbook)
+
+\subsubsection{10.6.4~~Fallback planning}\label{fallback-planning}
+
+Run \emph{table‑top exercises} for: 1. PQC handshake failure in
+production causing 5xx spike. 2. Upstream library CVE requiring
+emergency algorithm swap. 3. Supplier unable to deliver CBOM by
+contractual date.
+
+Each scenario results in a \emph{response run‑book} with RACI mapping
+and MTTR target.
+
+\subsection{10.7~~Outputs and
+deliverables}\label{outputs-and-deliverables}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Master roadmap} (interactive Gantt or Kanban) stored in PMO
+  repository.
+\item
+  \textbf{Budget \& resource plan} linked to finance system cost
+  centres.
+\item
+  \textbf{Supplier tracker} -- contract ID, CBOM status, PQC clause
+  compliance.
+\item
+  \textbf{Risk‑adjusted timeline} -- spreadsheet showing QARS, PI, and
+  planned migration date per asset.
+\end{itemize}
+
+All deliverables should version via Git (for content) and
+SharePoint/Confluence (for presentation decks). Use semantic version
+tags (e.g., \texttt{roadmap‑v1.1.0}) to sync with Document Control.
+
+\subsection{10.8~~Quality gates \& KPIs}\label{quality-gates-kpis}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3958}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2083}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2708}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Gate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Artefacts required
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Approver
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+KPI trigger
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{G1 -- Inventory lock} & CBOM freeze, gap register & CISO &
+\textless\,95\,\% asset coverage \\
+\textbf{G2 -- Pilot go‑live} & Run‑book, rollback plan, test report &
+Head of Ops & Error rate \textgreater\,0.1\,\% \\
+\textbf{G3 -- High‑risk cut‑over} & External audit attestation &
+Regulator liaison & Audit finding severity \textgreater\,``medium'' \\
+\textbf{G4 -- Programme closure} & Lessons‑learned report, metrics
+dashboard & Board & MTTR‑C \textgreater\,30\,days \\
+\end{longtable}
+
+Key performance indicators track \emph{Predictability} (variance
+vs.~baseline), \emph{Quality} (defects, CVEs), and
+\emph{Crypto‑compliance} (\% PQC certs).
+
+\subsection{10.9~~Common pitfalls \& how to avoid
+them}\label{common-pitfalls-how-to-avoid-them}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Over‑reliance on vendor roadmaps} -- mitigate by testing
+  open‑source PQC libraries in parallel.
+\item
+  \textbf{Ignoring hidden dependencies} (e.g., SSO tokens signed with
+  RSA) -- mandate \emph{dependency graph export} before migration.
+\item
+  \textbf{Resource starvation} during long tail of low‑risk systems --
+  secure multi‑year budget with ring‑fenced FTEs.
+\item
+  \textbf{One‑shot big‑bang} migrations -- favour \emph{incremental
+  hybrid} roll‑outs with fast rollback.
+\item
+  \textbf{Communication gaps} -- publish monthly progress dashboards to
+  executives and teams.
+\end{enumerate}
+
+\subsection{10.10~~References}\label{references-2}
+
+\begin{itemize}
+\tightlist
+\item
+  European Union (2025). \emph{Coordinated Implementation Roadmap for
+  Post‑Quantum Cryptography}.
+\item
+  TNO (2024). \emph{Post‑Quantum Cryptography Handbook}.
+\item
+  NIST (2024). \emph{FIPS~203,~204,~205}.
+\item
+  Mosca, M., et~al.~(2023). ``Cloud migration timelines for quantum
+  risk''.
+\end{itemize}
+
+\section{11 E -- Execution \& Migration}\label{e-execution-migration-1}
+
+\begin{quote}
+\textbf{Purpose of this chapter} -- provide a practical playbook for
+migrating systems from quantum‑vulnerable cryptography to post‑quantum
+or hybrid primitives while maintaining service continuity, performance,
+and compliance. It covers deployment models, testing strategies,
+rollback procedures and quality gates.
+\end{quote}
+
+\subsection{11.1 Guiding principles
+(≈\,120~words)}\label{guiding-principles-120-words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Hybrid first} -- pair PQC primitives with existing RSA/ECDHE
+  until ecosystem maturity allows full cut‑over.
+\item
+  \textbf{Incremental roll‑out} -- deploy to a small blast radius,
+  monitor, then expand.
+\item
+  \textbf{Telemetry‑driven} -- measure handshake success, latency, error
+  rates in real time.
+\item
+  \textbf{Reversible} -- every deployment must include an automated
+  rollback path.
+\item
+  \textbf{Compliance aligned} -- FIPS‑approved parameter sets, algorithm
+  policy enforced via crypto providers.
+\end{enumerate}
+
+\subsection{11.2 Migration patterns
+(≈\,250~words)}\label{migration-patterns-250-words}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0769}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1615}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.4462}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1385}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1769}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Pattern ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Use case
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pros
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cons
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{M‑H‑TLS} & Web/API TLS traffic & TLS~1.3 hybrid KEM: X25519 +
+ML‑KEM‑768 (RFC~9399) & Minimal latency; browsers in test builds &
+Larger ClientHello (\textasciitilde3\,kB) \\
+\textbf{M‑H‑SSH} & Admin shell access & OpenSSH 9.4c with ECDH‑SHA2 +
+Kyber768~+ dilithium keys & Easy CI integration & Requires updated
+clients \\
+\textbf{M‑PKI‑Nested} & Code signing & RSA‑2048 + Dilithium cert chain
+(nested signatures) & Backwards compatible & 2× cert size \\
+\textbf{M‑Hash‑FW} & IoT firmware updates & SPHINCS+ (128s) detached
+signature; verify in bootloader & Stateless, audit‑friendly & 1\,MB
+signature size \\
+\textbf{M‑Sym‑Wrap} & Large data archives & AES‑256‑GCM data, key
+wrapped with Kyber1024 then stored & Separates data-at-rest from PQC
+cadence & Key management overhead \\
+\end{longtable}
+
+\subsection{11.3 Deployment workflow
+(≈\,200~words)}\label{deployment-workflow-200-words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Readiness checkpoint} -- ensure Stage~R work‑package passes
+  go/no‑go gate.
+\item
+  \textbf{Pre‑prod lab} -- replicate production traffic with synthetic
+  load; collect baseline metrics.
+\item
+  \textbf{Canary release} -- enable PQC for 1\,\% of traffic or a single
+  AZ/node.
+\item
+  \textbf{Observation window} -- monitor KPIs (handshake
+  success\,≥\,99.9\,\%, latency ≤\,+5\,ms).
+\item
+  \textbf{Gradual ramp‑up} -- double traffic every 24\,h if KPIs green.
+\item
+  \textbf{Full rollout} -- 100\,\% production traffic.
+\item
+  \textbf{Post‑deployment audit} -- verify cert chains, scan for
+  deprecated algorithms.
+\end{enumerate}
+
+Automated scripts (\texttt{scripts/deploy/hybrid\_tls.sh}) orchestrate
+feature flags via Envoy or nginx annotations.
+
+\subsection{11.4 Testing strategy
+(≈\,180~words)}\label{testing-strategy-180-words}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1959}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2680}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5361}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Test type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Tool / framework
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Success criterion
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Unit tests & Google Test / Catch2 & PQC library returns expected
+ciphertext length \\
+Integration tests & Docker Compose stack & Service handshake completes
+in \textless\,100\,ms \\
+Fuzz testing & libFuzzer + AFL++ & No crashes after 24\,h fuzzing \\
+Interop tests & OQS‑OpenSSL ↔ OQS‑nginx & 100\,\% pass across selected
+cipher suites \\
+Performance bench & wrk2, k6, vegeta & Throughput impact ≤\,5\,\% of
+baseline \\
+Chaos drills & Pumba / TC‑netem & Rollback trigger within 30\,s of error
+spike \\
+\end{longtable}
+
+Continuous Integration pipelines in GitLab run these stages; results
+export to SonarQube and Grafana.
+
+\subsection{11.5 Rollback \& contingency
+(≈\,120~words)}\label{rollback-contingency-120-words}
+
+Every deployment artefact includes: - \textbf{Feature flag} to disable
+PQC handshake at runtime. - \textbf{Blue/green} or \textbf{canary}
+deployment environment. - \textbf{Backup certificates/keys} staged and
+tested. - \textbf{Automated playbook}
+\texttt{scripts/rollback/hybrid\_tls\_revert.sh}.
+
+Triggers: - Error rate \textgreater\,0.5\,\% sustained for 5\,min. -
+Latency increase \textgreater\,50\,ms for 5\,min. - Security incident
+flagged by SOC.
+
+\subsection{11.6 Telemetry \& metrics
+(≈\,150~words)}\label{telemetry-metrics-150-words}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1475}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5902}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0984}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1639}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Metric ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Target
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Collector
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{E‑1} & PQC handshake success rate & ≥\,99.9\,\% & Envoy stats \\
+\textbf{E‑2} & Median handshake latency (ms) & ≤\,+5\,ms & Prometheus \\
+\textbf{E‑3} & Error 5xx ratio during rollout & ≤\,0.1\,\% & Loki
+logs \\
+\textbf{E‑4} & Deprecated cipher usage (per hour) & 0 & Zeek \\
+\end{longtable}
+
+Dashboards live at \texttt{Grafana\ ›~PAREK\ ›~Execution}.
+
+\subsection{11.7 Quality gate G3 -- Production readiness
+(≈\,80~words)}\label{quality-gate-g3-production-readiness-80-words}
+
+CISO (security), CIO (availability) and CFO (budget) sign off when: 1.
+All tests pass, KPIs within thresholds. 2. Backout plan validated in
+staging. 3. Supplier HSM firmware certs present. 4. Compliance evidence
+(FIPS~cert numbers) attached to release ticket.
+
+\subsection{11.8 Documentation deliverables
+(≈\,100~words)}\label{documentation-deliverables-100-words}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Migration run‑book} -- step‑by‑step with screenshots/log
+  snippets.
+\item
+  \textbf{Risk acceptance record} -- signed PDF by risk owner.
+\item
+  \textbf{Change record} -- ITIL ticket with links to pipeline run IDs.
+\item
+  \textbf{Post‑implementation review} -- lessons learned, metric
+  screenshots.
+\end{itemize}
+
+Stored in \texttt{Confluence\ ›~PQC\ ›~Execution} with version tags
+matching Git tags.
+
+\subsection{11.9 Common pitfalls \& mitigations
+(≈\,120~words)}\label{common-pitfalls-mitigations-120-words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{TLS library mismatch} -- pin exact OQS‑OpenSSL version; run
+  interop tests.
+\item
+  \textbf{Certificate‑size blow‑up} -- enable TLS~1.3 compression
+  extensions or nested certs.
+\item
+  \textbf{Log parser breakage} -- update regex patterns to parse new
+  cipher suite names.
+\item
+  \textbf{HSM queue overflow} -- capacity test firmware before prod.
+\item
+  \textbf{Shadow RSA glue code} -- static‑link scanners in CI.
+\end{enumerate}
+
+\subsection{11.10 Future roadmap
+(≈\,90~words)}\label{future-roadmap-90-words}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Full PQ‑only mode} once browser vendors ship Kyber in stable
+  channels (target~2029).
+\item
+  \textbf{Algorithm agility APIs} (e.g., libpqcrypto~v2) to hot‑swap
+  parameter sets.
+\item
+  \textbf{Quantum‑safe VPN and email encryption pilots}
+  (Stage~E‑2026‑Q4).
+\end{itemize}
+
+\subsection{11.11 References}\label{references-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  IETF (2023). \emph{RFC~9399 -- Hybrid Key Exchange in TLS~1.3}.
+\item
+  Open Quantum Safe (2024). \emph{OQS‑OpenSSL 4.1}.
+\item
+  NIST (2024). \emph{FIPS~203~/~204~/~205}.
+\item
+  ENISA (2025). \emph{Post‑Quantum Migration Patterns}.
+\end{enumerate}
+
+\section{12 K -- Key‑Governance \& Continuous
+Improvement}\label{k-keygovernance-continuous-improvement-1}
+
+\begin{quote}
+\textbf{Purpose of this chapter} -- define how EU‑based organisations
+maintain crypto‑agility, monitor post‑quantum cryptography (PQC)
+compliance, and sustain supplier accountability after initial migrations
+are complete. Governance mechanisms align with \textbf{NIS~2},
+\textbf{DORA}, \textbf{GDPR}, the forthcoming \textbf{EU Cyber
+Resilience Act (CRA)}, and ENISA good‑practice guidelines.
+\end{quote}
+
+\subsection{12.1 Governance objectives
+(≈\,100~words)}\label{governance-objectives-100-words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Assurance} -- demonstrate to EU supervisory authorities (e.g.,
+  NIS~Cooperation~Group, ECB‑SSM, EBA) that PQC controls remain
+  effective.
+\item
+  \textbf{Transparency} -- provide board‑level and regulator‑level
+  dashboards for cryptographic health.
+\item
+  \textbf{Continuous agility} -- support hot‑swaps to new PQC algorithms
+  (e.g., ML‑KEM→ML‑KEM‑1024) without business disruption.
+\item
+  \textbf{Incident resilience} -- detect, triage and remediate crypto
+  failures within predefined Mean Time to Remediate Crypto (MTTR‑C)
+  targets.
+\end{enumerate}
+
+\subsection{12.2 Organisational structure
+(≈\,150~words)}\label{organisational-structure-150-words}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2917}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0750}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Body
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Frequency
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mandate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+EU reference
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{PAREK Steering Committee} & Quarterly & Approve metrics, budget,
+policy updates & NIS~2 Art.20 (management oversight) \\
+\textbf{Crypto Governance Office (CGO)} & Monthly & Operate dashboards,
+coordinate audits, own algorithm policy & ENISA Good Practice 4.2 \\
+\textbf{Crypto Review Board (CRB)} & Ad hoc & Assess new
+algorithms/parameters, sanction emergency swaps & ETSI TS~119~996
+input \\
+\textbf{Supplier Cryptography Board (SCB)} & Quarterly & Review Tier‑1
+supplier attestation and CBOM status & CRA Art.35 (supplier
+obligations) \\
+\end{longtable}
+
+Role mappings live in \texttt{part3/14-raci.md}.
+
+\subsection{12.3 Policy stack
+(≈\,120~words)}\label{policy-stack-120-words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Cryptographic Policy (CP‑01)} -- lists approved algorithms,
+  key lengths and protocols; revision every 6~months.
+\item
+  \textbf{Key Management Standard (KMS‑EU‑02)} -- describes lifecycle
+  (generation, storage in EU Qualified Trust Service Provider (QTSP)
+  HSMs, rotation, destruction).
+\item
+  \textbf{Algorithm Deprecation Procedure (ADP‑03)} -- triggers,
+  timelines and communication templates for banning weak algorithms.
+\item
+  \textbf{Supplier Cryptography Policy (SCP‑04)} -- references §13 PQC
+  Annex, aligns with CRA Article~10.
+\end{enumerate}
+
+Policies are version‑controlled in Git (\texttt{/policy/*}) and
+published to the intranet Confluence space \texttt{PQC/Policies}.
+
+\subsection{12.4 Metrics \& KPIs
+(≈\,200~words)}\label{metrics-kpis-200-words}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0857}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.6857}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0857}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+KPI ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Metric
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Target
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+EU linkage
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{K‑1} & \% Assets with valid CBOM (\textless\,24\,h old) &
+≥\,98\,\% & CRA Art.23 (SBOM/CBOM) \\
+\textbf{K‑2} & Unsupported algorithm instances detected & 0 & NIS~2
+Art.21 (technical measures) \\
+\textbf{K‑3} & Mean Time to Remediate Crypto (MTTR‑C) & ≤\,30\,days
+high‑risk; ≤\,90\,days medium & DORA RTS on ICT risk \\
+\textbf{K‑4} & \% Supplier attestations received on time & ≥\,95\,\% &
+CRA Art.35 \\
+\textbf{K‑5} & Annual crypto penetration test coverage & 100\,\% Tier‑1,
+80\,\% Tier‑2 & EBA Guidelines (ICT security) \\
+\end{longtable}
+
+All KPIs surface in Grafana dashboard
+\texttt{PQC\ ›\ Governance\ ›\ EU\ Metrics} and feed quarterly NIS~2
+reports.
+
+\subsection{12.5 Continuous CBOM scanning
+(≈\,150~words)}\label{continuous-cbom-scanning-150-words}
+
+A \textbf{CBOM Delta Scanner} (Rust microservice) polls the CBOM graph
+database hourly, compares it with the last approved baseline and flags:
+- \textbf{Additions} -- new algorithms or keys not in policy. -
+\textbf{Deletions} -- removed assets (possible shadow IT). -
+\textbf{Parameter drift} -- changed key size or version.
+
+Alerts integrate with ServiceNow (CIRF module). False positives must be
+closed within 72\,h. All deltas export to
+\texttt{assets/reports/cbom-delta-YYYY‑MM‑DD.csv} for audit evidence.
+
+\subsection{12.6 Algorithm lifecycle management
+(≈\,180~words)}\label{algorithm-lifecycle-management-180-words}
+
+\subsubsection{12.6.1 Evaluation pipeline}\label{evaluation-pipeline}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Research~▶ Intake} -- CGO tracks NIST, ETSI, CEN/CENELEC
+  outputs.
+\item
+  \textbf{Lab benchmark} -- CRB benchmarks latency, CPU, memory on
+  reference workloads.
+\item
+  \textbf{Security review} -- external academic peer review (EU PQC
+  Consortium).
+\item
+  \textbf{Pilot flag} -- enable new algorithm behind feature flag for
+  selected services.
+\item
+  \textbf{Policy update} -- if successful, CP‑01 revision published.
+\end{enumerate}
+
+\subsubsection{12.6.2 Deprecation stages}\label{deprecation-stages}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Stage & Marker & Timeline \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Proposed} & New candidate algorithm in ETSI draft & 0\,months \\
+\textbf{Approved} & Added to CP‑01 & +6\,mths \\
+\textbf{Mandatory} & Required for all new deployments & +18\,mths \\
+\textbf{Forbidden} & Outgoing algorithm banned & +36\,mths \\
+\end{longtable}
+
+Communication packs sent via email and intranet; affected product owners
+get Jira tasks auto‑generated.
+
+\subsection{12.7 Incident response \& reporting
+(≈\,150~words)}\label{incident-response-reporting-150-words}
+
+Crypto incidents are handled under the \textbf{EU NIS~2 major incident}
+framework:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Detection} -- SOC rule ``unsupported\_ciphersuite'' fires.
+\item
+  \textbf{Initial report} -- Incident Response Team logs case in
+  TheHive; notif to national CSIRT within 24\,h.
+\item
+  \textbf{Containment} -- activate rollback script or key rotation.
+\item
+  \textbf{Eradication} -- remove bad certs, patch firmware.
+\item
+  \textbf{Post‑incident report} -- deliver ENISA‑template report within
+  72\,h to competent authority.
+\item
+  \textbf{Lessons‑learned review} -- CRB updates ADP‑03 or KMS‑EU‑02.
+\end{enumerate}
+
+All steps timestamped; evidence archived in EU datacentre (GDPR
+compliant).
+
+\subsection{12.8 Audit \& assurance
+(≈\,120~words)}\label{audit-assurance-120-words}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Internal audit} -- annual review aligned with ISAE~3402,
+  reports to Audit Committee.
+\item
+  \textbf{External audit} -- Big~4 or qualified auditor validates KPIs,
+  CBOM process, compliance with CRA and NIS~2.
+\item
+  \textbf{Regulator review} -- ECB‑SSM may request additional evidence
+  for systemically important banks; DORA mandates ICT third‑party risk
+  audits.
+\end{itemize}
+
+Audit findings tracked in Jira project \texttt{AUDIT‑PQC}; remediation
+owned by CGO.
+
+\subsection{12.9 Integration with other PAREK stages
+(≈\,100~words)}\label{integration-with-other-parek-stages-100-words}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{From Stage~E} -- deployment telemetry populates KPIs K‑1 to
+  K‑3.
+\item
+  \textbf{To Stage~P} -- CBOM deltas feed new asset discovery.
+\item
+  \textbf{To Stage~R} -- maturity scores influence roadmap
+  reprioritisation.
+\item
+  \textbf{With Stage~A} -- incident metrics adjust Exposure Surface
+  Index for QARS re‑runs.
+\end{itemize}
+
+\subsection{12.10 Future EU developments
+(≈\,80~words)}\label{future-eu-developments-80-words}
+
+The \textbf{EU Digital Identity Wallet} regulation (eIDAS~2) will
+require PQC‑capable Qualified Electronic Signatures (QES) by 2030. The
+\textbf{EU AI Act} may impose additional controls for cryptographic
+integrity in AI systems. Governance policy CP‑01 plans review cycles
+aligned to these legislative sunsets.
+
+\subsection{12.11 References}\label{references-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ENISA~(2025). \emph{Good Practices for Crypto‑Agility and Post‑Quantum
+  Preparedness}.
+\item
+  European Commission~(2023). \emph{NIS~2 Directive}.
+\item
+  European Parliament~(2025). \emph{Cyber Resilience Act~-- final text}.
+\item
+  ECB‑SSM~(2024). \emph{Cyber Resilience Oversight Expectations for
+  FMIs}.
+\item
+  ETSI~(2024). \emph{TS~119~996~-- Algorithm Agility Guidance}.
+\item
+  CEN/CENELEC~(2025). \emph{PQC Standards Roadmap}.
+\end{enumerate}
+
+\section{13 Supply‑Chain Integration}\label{supplychain-integration}
+
+\begin{quote}
+\textbf{Purpose of this chapter} -- embed post‑quantum cryptography
+(PQC) requirements into the entire supplier life‑cycle so that every
+external component, cloud service and piece of hardware entering the
+organisation's environment supports PAREK objectives and timelines.
+\end{quote}
+
+\subsection{13.1 Why supply‑chain matters in the quantum
+era}\label{why-supplychain-matters-in-the-quantum-era}
+
+Modern digital estates are a mosaic of proprietary SaaS APIs,
+open‑source libraries, OEM devices and managed service providers.
+Research by ENISA shows that 75\,\% of successful crypto‑deprecation
+projects failed \textbf{not} because internal teams resisted change but
+because third‑party dependencies lagged two to three years behind
+security roadmaps. Quantum migration exacerbates this risk: a single
+RSA‑signed software update from a vendor can re‑introduce vulnerable
+primitives across thousands of endpoints. Therefore, PQC adoption is no
+longer an internal programme but a \textbf{supply‑chain transformation
+endeavour}. Section\,13 defines the contractual hooks, technical
+artefacts (CBOM/SBOM), validation workflows and governance forums
+required to make suppliers first‑class citizens in the PAREK lifecycle.
+
+\subsection{13.2 Scope and definitions}\label{scope-and-definitions}
+
+\textbf{Supplier} means any external legal entity that designs, builds,
+sells or operates software, hardware or services running in, or
+interfacing with, the organisation's production or pre‑production
+environments. This includes SaaS providers, IaaS/PaaS cloud vendors, OEM
+hardware suppliers, open‑source project maintainers (where code is
+bundled), consultants and contract developers. \textbf{Supply‑chain
+integration} spans four control layers: \emph{onboarding},
+\emph{contracting}, \emph{operation}, and \emph{termination}. The
+chapter applies to all suppliers whose deliverables contain or rely on
+cryptographic functions, regardless of whether those functions are
+explicitly exposed to the organisation (e.g., TLS) or hidden inside
+firmware.
+
+\subsection{13.3 Objectives}\label{objectives}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Cryptographic transparency} -- every supplier must furnish a
+  machine‑readable Cryptography Bill of Materials (CBOM) aligned to
+  CycloneDX\,v1.6.
+\item
+  \textbf{PQC readiness} -- high‑risk suppliers deliver PQC‑capable
+  builds by 2028; medium‑risk by 2031.
+\item
+  \textbf{Continuous assurance} -- suppliers attest quarterly that no
+  unsupported algorithms (RSA≤2048, ECC P‑256, SHA‑1) appear in
+  deliverables.
+\item
+  \textbf{Incident response} -- suppliers notify the organisation within
+  24~hours of any crypto‑related CVE with a CVSS score\,≥\,7.0.
+\end{enumerate}
+
+\subsection{13.4 Supplier segmentation
+model}\label{supplier-segmentation-model}
+
+The organisation classifies suppliers into \textbf{three tiers}:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1210}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4013}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2548}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2229}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Tier
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Criteria
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Examples
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Governance cadence
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{1 -- Strategic} & Provides mission‑critical platforms or handles
+classified data. & Core banking engine, national ID cloud. & Quarterly
+steering; on‑site audits. \\
+\textbf{2 -- Operational} & Supports key business processes but without
+systemic impact. & CRM SaaS, managed network. & Semi‑annual review;
+remote audit. \\
+\textbf{3 -- Commodity} & Easily replaceable, low data sensitivity. &
+Peripheral hardware, bulk email gateway. & Annual self‑assessment. \\
+\end{longtable}
+
+The tier determines the depth of CBOM detail, test evidence, and
+contract clauses required. Tier~1 suppliers must present signed CBOMs,
+PQC migration roadmaps and evidence of internal crypto‑agility testing.
+Tier~3 suppliers may supply a simplified attestation if they leverage a
+certified Tier~1 sub‑provider.
+
+\subsection{13.5 Contractual
+requirements}\label{contractual-requirements}
+
+All new or renewed contracts \textbf{must} include a \emph{PQC Annex}
+covering:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{CBOM delivery schedule} -- initial CBOM within 30~days of
+  contract signature; refreshed artefact with each major release or
+  monthly for SaaS.
+\item
+  \textbf{PQC migration milestones} -- align with the organisation's
+  roadmap (§10):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Kyber/Dilithium hybrid capability in test by \textbf{2027‑12‑31}.
+  \item
+    FIPS‑validated PQC primitives in production by \textbf{2030‑06‑30}
+    for Tier\,1; \textbf{2031‑12‑31} for Tier\,2.
+  \end{itemize}
+\item
+  \textbf{Algorithm deprecation clause} -- supplier shall not introduce
+  or re‑enable algorithms listed on the organisation's \emph{Forbidden
+  Algorithm List} (FAL).
+\item
+  \textbf{Crypto incident SLA} -- acknowledge within 2~business hours;
+  provide root‑cause analysis within 5~working days.
+\item
+  \textbf{Audit \& testing rights} -- organisation may perform
+  penetration tests focused on cryptographic endpoints once per calendar
+  year, subject to 10~days' notice.
+\item
+  \textbf{Termination for non‑compliance} -- failure to meet milestone
+  dates may trigger penalty fees up to 5\,\% of annual contract value or
+  early termination.
+\end{enumerate}
+
+\begin{quote}
+\emph{Tip~--} Legal teams should store the PQC Annex as a standalone
+template (assets/contracts/pqc‑annex.docx) to streamline procurement.
+All clauses reference external artefacts (CBOM spec, FAL) by version
+number to avoid re‑negotiation when the lists update.
+\end{quote}
+
+\subsection{13.6 Technical artefacts and interfaces
+(≈\,300~words)}\label{technical-artefacts-and-interfaces-300-words}
+
+\subsubsection{13.6.1 Cryptography Bill of Materials
+(CBOM)}\label{cryptography-bill-of-materials-cbom}
+
+A CBOM is a JSON document (CycloneDX schema
+\texttt{component:type="cryptography"}) listing:
+
+\begin{itemize}
+\tightlist
+\item
+  Algorithm (e.g., \texttt{rsa2048}, \texttt{ml‑kem‑768})
+\item
+  Protocol context (\texttt{tls1.3}, \texttt{ssh2}) and key sizes
+\item
+  Certificates or key IDs, including expiry and usage (signing,
+  encryption)
+\item
+  Hardware anchoring (TPM, HSM model \& firmware version)
+\item
+  Compliance tags (FIPS~203, CC~EAL4+)
+\end{itemize}
+
+Suppliers must sign the CBOM using DSSE (in‑toto) and attach the
+signature envelope as \texttt{*.cbom.sig}.
+
+\subsubsection{13.6.2 SBOM‑CBOM linkage}\label{sbomcbom-linkage}
+
+If a supplier already provides a Software Bill of Materials (SBOM), the
+CBOM should reference SBOM components via \texttt{bom‑link} for
+traceability. Example snippet:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"bom‑link"}\FunctionTok{:} \StringTok{"urn:uuid:123e4567‑e89b‑12d3‑a456‑426614174000"}\FunctionTok{,}
+  \DataTypeTok{"algorithm"}\FunctionTok{:} \StringTok{"ml‑kem‑768"}\FunctionTok{,}
+  \DataTypeTok{"context"}\FunctionTok{:} \StringTok{"tls1.3"}\FunctionTok{,}
+  \DataTypeTok{"status"}\FunctionTok{:} \StringTok{"hybrid"}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{13.6.3 Delivery channels}\label{delivery-channels}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{API} -- Tier~1 suppliers push CBOMs to \texttt{/api/v1/cbom}
+  with OAuth~2.0 MTLS.
+\item
+  \textbf{S3 bucket} -- Tier~2 post JSON files to
+  \texttt{s3://cbom‑uploads/\textless{}supplier\textgreater{}/\textless{}YYYY‑MM\textgreater{}/}.
+\item
+  \textbf{Email gateway} -- Tier~3 may email CBOMs signed with PGP;
+  files routed to an ingest Lambda.
+\end{itemize}
+
+\subsubsection{13.6.4 Validation pipeline}\label{validation-pipeline}
+
+Upon receipt, the organisation's \textbf{Crypto Intake Service}
+performs:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Schema validation} -- rejects non‑conformant JSON.
+\item
+  \textbf{Signature check} -- DSSE verification against supplier's root
+  cert.
+\item
+  \textbf{Policy scan} -- flag forbidden algorithms; raise ticket if
+  found.
+\item
+  \textbf{Graph merge} -- append assets to central CBOM graph database.
+\end{enumerate}
+
+Failures trigger alerts to the \emph{Supplier Risk Queue} (Jira project
+\texttt{SRQ}).
+
+\subsection{13.7 Supplier assessment workflow
+(≈\,180~words)}\label{supplier-assessment-workflow-180-words}
+
+The following swim‑lane illustrates the annual assessment for a Tier~1
+supplier:
+
+\begin{verbatim}
+Supplier ─┬─► Submit self‑assessment (questionnaire Q‑PQC‑001)
+          │
+Risk Team ├─► Score questionnaire (scale 0‑5)
+          │
+Crypto‑Sec COE ├─► Review CBOM → run lab tests (hybrid TLS)
+              │
+Procurement ─┴─► Evaluate penalties/bonuses → update contract
+\end{verbatim}
+
+Scores below 3 trigger a \textbf{Corrective Action Plan (CAP)}. CAP
+tasks are tracked in the PAREK Programme backlog and must close within
+90~days. Suppliers with sustained scores ≥4 across two consecutive
+assessments may earn incentive rebates (1\,\% of contract value) or
+preferred tender status.
+
+\subsection{13.8 Tooling ecosystem
+(≈\,150~words)}\label{tooling-ecosystem-150-words}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2923}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3538}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3538}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Function
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Recommended tool / spec
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Notes
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+CBOM authoring & \texttt{cyclonedx‑python‑lib} & CLI + library
+support \\
+DSSE signing & \texttt{sigstore/cosign} & Leverage Fulcio CA \\
+Validation pipeline & Custom Go microservice & Pluggable policy
+engine \\
+Graph storage & Neo4j or Amazon Neptune & Supports GraphQL API \\
+Dashboard \& KPIs & Grafana + Prometheus & CBOM ingestion metrics \\
+\end{longtable}
+
+Integration playbooks live under \texttt{scripts/integration/} with
+Terraform modules for AWS and Azure, ensuring suppliers can spin up the
+same pipeline in their staging environments.
+
+\subsection{13.9 Governance forums
+(≈\,120~words)}\label{governance-forums-120-words}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Quarterly Supplier Cryptography Board (SCB)} -- chaired by the
+  CISO; Tier~1 suppliers present migration progress. Outputs: meeting
+  minutes, updated risk register.
+\item
+  \textbf{Monthly CBOM Ops Call} -- operational teams review ingestion
+  metrics, false‑positive rates, upcoming schema changes.
+\item
+  \textbf{Annual PQC Summit} -- all suppliers invited; roadmap updates,
+  lessons learned, and tooling demos shared. Attendance is a contract
+  requirement for Tier\,1~and\,2 suppliers.
+\end{itemize}
+
+Governance artefacts are stored in SharePoint folder
+\texttt{Governance/Supply‑Chain/} and referenced in Document Control.
+
+\subsection{13.10 Integration with PAREK KPIs
+(≈\,120~words)}\label{integration-with-parek-kpis-120-words}
+
+The following metrics flow into §15:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1081}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4324}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2162}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2432}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+KPI ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Metric
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Target
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Data source
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{SC‑1} & \% suppliers with valid CBOM & ≥\,98\,\% & CBOM intake
+logs \\
+\textbf{SC‑2} & Mean CBOM ingestion latency & ≤\,2\,h & Pipeline
+dashboard \\
+\textbf{SC‑3} & \% Tier~1 PQC‑capable in test & 100\,\% by 2027‑Q4 &
+Supplier roadmap \\
+\textbf{SC‑4} & Crypto incident SLA breach count & 0 per quarter & GRC
+ticket system \\
+\end{longtable}
+
+These KPIs feed the executive dashboard and are reported to regulators
+under NIS‑2 critical‑infrastructure obligations.
+
+\subsection{13.11 Common pitfalls \& mitigations
+(≈\,120~words)}\label{common-pitfalls-mitigations-120-words-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Volume overwhelm} -- thousands of CBOM files per month;
+  mitigate with batched digests and delta ingestion.
+\item
+  \textbf{Schema drift} -- suppliers using outdated CycloneDX versions;
+  mandate schema~URI pinning and auto‑reject mismatches.
+\item
+  \textbf{Shadow suppliers} -- fourth‑party components hidden inside
+  Tier~2 deliverables; enforce SBOM‑CBOM linkage and random audits.
+\item
+  \textbf{Legal bottlenecks} -- protracted clause negotiations; maintain
+  pre‑approved PQC Annex template and fallback MSA language.
+\item
+  \textbf{False sense of security} -- signed CBOM ≠ secure crypto;
+  supplement with periodic binary scans and penetration tests.
+\end{enumerate}
+
+\subsection{13.12 Future outlook
+(≈\,90~words)}\label{future-outlook-90-words}
+
+The EU Cyber Resilience Act may mandate \textbf{machine‑readable
+vulnerability reporting} and real‑time disclosure notices. CycloneDX 2.0
+will likely promote CBOM from \emph{extension} to \emph{first‑class
+object}, adding richer lifecycle metadata (retirement, key‑rotation
+schedules). Suppliers should budget time to adopt the new schema by
+2027. Quantum‑safe HSM certifications (FIPS~203 level~3, CC~EAL5+) are
+expected by 2026; contracts will update automatically when the
+organisation's \emph{Approved Crypto Module List} refreshes.
+
+\subsection{13.13 References}\label{references-5}
+
+\begin{itemize}
+\tightlist
+\item
+  CycloneDX~(2025). \emph{Cryptography Bill of Materials v1.6
+  Specification}.
+\item
+  ENISA~(2024). \emph{Threat Landscape for Supply‑Chain Attacks}.
+\item
+  Sigstore~(2024). \emph{Cosign~2.0 -- Secure Artifact Signing}.
+\item
+  European Union~(2025). \emph{Cyber Resilience Act (final text)}.
+\item
+  TNO~(2024). \emph{Post‑Quantum Cryptography Handbook -- Supplier
+  Section}.
+\end{itemize}
+
+\section{14 Roles, Responsibilities \&
+RACI}\label{roles-responsibilities-raci}
+
+\begin{quote}
+\textbf{Purpose of this chapter} -- assign clear \textbf{R}esponsible,
+\textbf{A}ccountable, \textbf{C}onsulted and \textbf{I}nformed ownership
+for every stage, artefact and quality gate in the PAREK Framework, so
+that decision‑making is transparent and compliant with EU governance
+norms (NIS~2, DORA, GDPR, CRA).
+\end{quote}
+
+\subsection{14.1 RACI legend}\label{raci-legend}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.0571}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.9429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Code
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Meaning
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{R} & \textbf{Responsible} -- executes the task / delivers the
+artefact \\
+\textbf{A} & \textbf{Accountable} -- final sign‑off, owns success or
+failure \\
+\textbf{C} & \textbf{Consulted} -- provides input or subject‑matter
+expertise \\
+\textbf{I} & \textbf{Informed} -- kept up to date via dashboards,
+reports or email \\
+\end{longtable}
+
+An individual or group may hold multiple codes but each task must have
+\textbf{exactly one Accountable (A)}.
+
+\subsection{14.2 Key organisational roles (EU
+context)}\label{key-organisational-roles-eu-context}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0625}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4375}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Abbr.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Role / body
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Typical EU alignment
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+BoD & Board of Directors & NIS~2 Art.~20 -- management oversight \\
+CISO & Chief Information Security Officer & NIS~2 Art.~21 -- technical
+measures \\
+CIO & Chief Information Officer & DORA ICT strategy \\
+CFO & Chief Financial Officer & Budget approvals, risk cost modelling \\
+CGO & Crypto Governance Office & Operates CP‑01, KMS‑EU‑02 policies \\
+CRB & Crypto Review Board & Reviews new algorithms, deprecations \\
+SCB & Supplier Cryptography Board & Oversees Tier‑1 suppliers (§13) \\
+PMO & Programme Management Office & Tracks roadmap (§10) \\
+Squad & Migration Squad (Dev‑Ops) & Executes Stage~E run‑books \\
+Sup & Tier‑1 Supplier Representative & Provides CBOMs, attestations \\
+\end{longtable}
+
+\subsection{14.3 PAREK life‑cycle RACI
+matrix}\label{parek-lifecycle-raci-matrix}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.5775}}
+  >{\centering\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0423}}
+  >{\centering\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0423}}
+  >{\centering\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0423}}
+  >{\centering\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0423}}
+  >{\centering\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0423}}
+  >{\centering\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0423}}
+  >{\centering\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0423}}
+  >{\centering\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0423}}
+  >{\centering\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0423}}
+  >{\centering\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0423}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Stage / Artefact
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+BoD
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+CISO
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+CIO
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+CFO
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+CGO
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+CRB
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+SCB
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+PMO
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Squad
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Sup
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{P~-- Inventory} & I & A & C & I & R & C & I & I & R & R \\
+--- CBOM schema \& tooling & I & C & C & I & A & C & I & I & R & R \\
+--- Gap register & I & A & C & I & R & --- & I & C & R & C \\
+\textbf{A~-- Quantum Risk Assessment} & I & A & C & C & R & C & I & C &
+--- & C \\
+--- QARS model weights & I & A & C & C & R & C & --- & C & --- & I \\
+\textbf{R~-- Road‑map \& Readiness} & A & C & A & A & C & --- & C & R &
+C & I \\
+--- Budget baseline & A & C & C & A & C & --- & --- & R & --- & I \\
+--- Supplier alignment plan & I & C & C & C & C & --- & A & R & --- &
+R \\
+\textbf{E~-- Execution \& Migration} & I & A & A & I & C & C & I & C & R
+& R \\
+--- Pilot roll‑out & I & C & A & I & C & C & I & C & R & R \\
+--- Rollback execution & I & A & A & I & --- & --- & I & C & R & R \\
+\textbf{K~-- Key Governance \& Improvement} & I & A & C & C & R & A & C
+& I & C & C \\
+--- KPI dashboard (K‑1 → K‑5) & I & A & C & C & R & C & C & I & C & I \\
+--- Policy CP‑01 revision & I & C & C & I & A & R & I & I & --- & C \\
+\textbf{Quality gates (G1‑G4)} & A & A & A & C & R & C & I & R & C &
+I \\
+\end{longtable}
+
+Legend: \textbf{R = Responsible, A = Accountable, C = Consulted, I =
+Informed}.
+
+\subsection{14.4 Governance cadence (≈ 100
+words)}\label{governance-cadence-100-words}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+Forum & Frequency & Chair & Key outputs \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Steering Comm. & Quarterly & BoD & Budget, KPI review, escalations \\
+CGO Weekly Ops & Weekly & CGO & CBOM delta report, KPI trend \\
+CRB Algorithm & Ad~hoc & CRB & Algorithm approval/deprecation \\
+SCB Supplier & Quarterly & CISO & Supplier compliance scorecard \\
+\end{longtable}
+
+Outputs feed Document Control and Stage~K dashboards.
+
+\subsection{14.5 EU regulatory mapping (≈ 150
+words)}\label{eu-regulatory-mapping-150-words}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{NIS~2 Art.~20} -- Board is \emph{Accountable} for
+  cybersecurity risk management → BoD holds \textbf{A} for quality
+  gates.
+\item
+  \textbf{DORA (EU~2022/2554) Art.~12} -- ICT risk management → CIO
+  shares \textbf{A} in Stages~R and~E.
+\item
+  \textbf{GDPR Art.~32} -- Security of processing → CISO ensures
+  encryption strength (\textbf{A} in A, E, K).
+\item
+  \textbf{CRA Draft Art.~35} -- Supplier obligations → SCB assigns
+  \textbf{A} to supplier compliance artefacts.
+\end{itemize}
+
+Alignment table stored under \texttt{assets/compliance/eu‑mapping.xlsx}.
+
+\subsection{14.6 Role onboarding \& training (≈ 80
+words)}\label{role-onboarding-training-80-words}
+
+Each role receives a tailored induction pack (OneDrive folder
+\texttt{Training/PAREK/\textless{}role\textgreater{}}), containing: -
+Role charter \& RACI excerpt - Relevant policies (CP‑01, KMS‑EU‑02) -
+Playbooks (incident response, algorithm review) - e‑Learning module
+(SCORM) with EU regulatory quiz
+
+Completion tracked via LMS; minimum pass score = 85\,\%.
+
+\section{15 KPIs \& Reporting Dashboard''
+authors}\label{kpis-reporting-dashboard-authors}
+
+\begin{quote}
+\textbf{Purpose of this chapter} -- define the key‑performance
+indicators (KPIs), data flows and reporting dashboards that quantify
+progress and operational health of the PAREK Programme. Metrics are
+calibrated to EU supervisory expectations under \textbf{NIS~2},
+\textbf{DORA} and the forthcoming \textbf{Cyber Resilience Act (CRA)}.
+\end{quote}
+
+\subsection{15.1 Why KPIs matter
+(≈\,120~words)}\label{why-kpis-matter-120-words}
+
+The EU regulatory shift from \emph{best‑effort} to \emph{demonstrable
+assurance} means boards must produce hard evidence that quantum‑risk
+controls are working. KPIs convert the qualitative objectives of PAREK
+into quantifiable signals that:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Steer execution} -- highlight bottlenecks early.
+\item
+  \textbf{Inform regulators} -- feed mandatory NIS~2 incident and
+  compliance reports.
+\item
+  \textbf{Drive supplier accountability} -- tie contract
+  penalties/bonuses to measurable outcomes.
+\end{enumerate}
+
+Without robust KPIs, crypto‑agility devolves into one‑off migrations,
+risking drift and audit findings.
+
+\subsection{15.2 KPI taxonomy
+(≈\,100~words)}\label{kpi-taxonomy-100-words}
+
+KPIs are grouped into three tiers:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2381}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2024}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1071}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4524}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Tier
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Audience
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Frequency
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Purpose
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{T1 -- Executive} & Board, regulators & Quarterly & Programme
+health, compliance status \\
+\textbf{T2 -- Operational} & CISO, CGO, PMO & Monthly & Stage‑level
+performance, SLA breaches \\
+\textbf{T3 -- Tactical} & Dev‑Ops squads & Daily & Deployment metrics,
+incident telemetry \\
+\end{longtable}
+
+This chapter lists core Tier~1 and Tier~2 KPIs. Tactical metrics are
+documented in Stage~E run‑books.
+
+\subsection{15.3 Core KPI catalogue
+(≈\,250~words)}\label{core-kpi-catalogue-250-words}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0488}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0610}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.3049}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2683}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0854}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1220}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1098}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+KPI ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Stage link
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Metric (EU aligned)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Calculation / data source
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Target
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Alert threshold
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reg. mapping
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{P‑1} & P & CBOM coverage &
+\texttt{\#assets\ with\ valid\ CBOM\ /\ \#assets\ in\ scope} & ≥\,98\,\%
+& \textless\,95\,\% & CRA~Art\,23 \\
+\textbf{A‑1} & A & High‑risk assets (QARS~≥\,0.65) remaining & Count
+from \texttt{risk\_registry.csv} & →\,0 by 2029‑Q4 &
+\textgreater\,Baseline trendline & NIS~2 Art\,21 \\
+\textbf{R‑1} & R & Schedule variance &
+\texttt{planned\ finish\ –\ actual} (days) & ±\,0--10\,days &
+\textgreater\,15\,days & DORA Art\,12 \\
+\textbf{E‑1} & E & PQC handshake success rate & Envoy / Prometheus
+metric & ≥\,99.9\,\% & \textless\,99.5\,\% & NIS\,CSIRT guidance \\
+\textbf{E‑2} & E & Median handshake latency delta &
+\texttt{PQC\_latency\ –\ baseline\_latency} & ≤\,+5\,ms &
+\textgreater\,+10\,ms & ENISA perf. rec. \\
+\textbf{K‑1} & K & Unsupported algorithm instances detected &
+Zeek/Suricata rules & 0 & \textgreater\,0 & GDPR Art\,32 \\
+\textbf{K‑2} & K & Mean Time to Remediate Crypto (MTTR‑C) -- high‑risk &
+\texttt{Σ\ resolution\ time\ /\ \#\ incidents} & ≤\,30\,days &
+\textgreater\,45\,days & DORA RTS \\
+\textbf{SC‑1} & §13 & Suppliers with on‑time CBOM and attestation &
+\texttt{\#compliant\ /\ \#total\ suppliers} & ≥\,95\,\% &
+\textless\,90\,\% & CRA~Art\,35 \\
+\textbf{M‑1} & §10 & Programme budget adherence &
+\texttt{actual\ spend\ /\ budget} & ≤\,110\,\% & \textgreater\,120\,\% &
+Board policy \\
+\end{longtable}
+
+\subsection{15.4 Data architecture
+(≈\,150~words)}\label{data-architecture-150-words}
+
+\begin{verbatim}
+CBOM API ─┐                 ┌──► Postgres (risk_registry) ──► Grafana API
+          │   Lambda ETL   │
+Zeek logs ─┤──► Kafka bus ──┤
+          │                 │
+Jira API ──┘                 └──► Prometheus (E‑metrics) ───► Grafana API
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Ingest layer} -- Kafka collects CBOM deltas, Zeek alerts,
+  deployment metrics.
+\item
+  \textbf{Storage layer} -- time‑series in Prometheus; relational in
+  Postgres.
+\item
+  \textbf{Analytics layer} -- Python notebook
+  (\texttt{scripts/analysis/kpi\_report.ipynb}) calculates monthly
+  aggregates.
+\item
+  \textbf{Visual layer} -- Grafana dashboards; snapshots auto‑export as
+  PNG for board packs.
+\end{itemize}
+
+All components run in EU datacentres (GDPR Art\,44 compliant). Access
+controls via Azure AD groups.
+
+\subsection{15.5 Dashboard design
+(≈\,120~words)}\label{dashboard-design-120-words}
+
+\subsubsection{Executive dashboard}\label{executive-dashboard}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Gauge} -- CBOM coverage (P‑1)
+\item
+  \textbf{Stacked bar} -- High/medium/low assets over time (A‑1)
+\item
+  \textbf{Line} -- Budget vs.~actual (M‑1)
+\item
+  \textbf{Heat‑map} -- Supplier compliance (SC‑1)
+\end{itemize}
+
+\subsubsection{Operational dashboard}\label{operational-dashboard}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Table} -- Unsupported algorithm findings (K‑1) by business
+  unit
+\item
+  \textbf{Histogram} -- MTTR‑C distribution (K‑2)
+\item
+  \textbf{Sankey} -- Incident cause → resolution path
+\item
+  \textbf{Alert panel} -- Live E‑metrics (E‑1, E‑2)
+\end{itemize}
+
+Grafana JSON imports stored under
+\texttt{assets/grafana/kpi\_dashboards/}.
+
+\subsection{15.6 Governance \& review cadence
+(≈\,120~words)}\label{governance-review-cadence-120-words}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3226}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1613}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1452}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2903}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0806}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Report
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Audience
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Frequency
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Delivery channel
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Owner
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+KPI snapshot (PDF) & Board & Quarterly & SharePoint / email & PMO \\
+KPI drill‑down deck & CGO & Monthly & Confluence & CGO \\
+KPI raw export (CSV) & Regulators & Annual & SFTP to CSIRT & CISO \\
+\end{longtable}
+
+Each quarter, the Steering Committee reviews trend deltas. Any KPI
+breaching alert threshold triggers a \textbf{Corrective Action Plan
+(CAP)} logged in Jira.
+
+\subsection{15.7 Continuous improvement loop
+(≈\,100\,words)}\label{continuous-improvement-loop-100-words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Detect} -- KPI alert fires.
+\item
+  \textbf{Diagnose} -- Root‑cause analysis meeting within 5~days.
+\item
+  \textbf{Decide} -- CRB or CGO selects remediation (e.g., policy tweak,
+  supplier escalation).
+\item
+  \textbf{Deliver} -- Squad implements; KPI flagged ``watch'' for
+  30~days.
+\item
+  \textbf{Document} -- Lessons‑learned stored in Confluence.
+\end{enumerate}
+
+KPIs themselves undergo annual review (Stage\,K). Weightings or new
+metrics added through change‑control procedure CP‑01‑KPI‑UPDATE.
+
+\subsection{15.8 EU regulatory reporting alignment
+(≈\,120~words)}\label{eu-regulatory-reporting-alignment-120-words}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{NIS~2} -- P‑1, K‑1, K‑2 feed into the \emph{Security Measures}
+  section of the annual NIS~2 compliance report sent to the national
+  CSIRT.
+\item
+  \textbf{DORA} -- K‑2, E‑metrics underpin the ICT~Risk Management
+  template required by ESAs.
+\item
+  \textbf{CRA} -- SC‑1 and CBOM coverage support product security
+  declarations.
+\item
+  \textbf{ECB TIBER‑EU} -- A‑1 trend informs the threat‑intelligence
+  baseline for red‑team tests.
+\end{itemize}
+
+Mapping table maintained at \texttt{assets/compliance/kpi‑eu‑map.xlsx}.
+
+\subsection{15.9 Common pitfalls \& mitigations
+(≈\,100~words)}\label{common-pitfalls-mitigations-100-words-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Metric overload} -- focus on \textless\,15 KPIs; archive
+  vanity metrics.
+\item
+  \textbf{Gaming the numbers} -- random audits of data sources;
+  automated anomaly detection.
+\item
+  \textbf{Stale dashboards} -- CI job fails; alert on last data‑refresh
+  timestamp \textgreater\,1~day.
+\item
+  \textbf{One‑size targets} -- calibrate KPIs per business unit; avoid
+  blanket thresholds.
+\end{enumerate}
+
+\subsection{15.10 Next steps}\label{next-steps-2}
+
+\begin{itemize}
+\tightlist
+\item
+  Finalise Grafana dashboard JSON after Sections\,8--12 baseline
+  metrics.
+\item
+  Include KPI snapshot in next Board pack (Q3~2025).
+\item
+  Schedule ENISA‑style KPI workshop for suppliers (Q4~2025).
+\end{itemize}
+
+\subsection{15.11 References}\label{references-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ENISA (2024). \emph{Guidelines on KPIs for Cybersecurity Measures}.
+\item
+  European Commission (2023). \emph{NIS~2 Directive}.
+\item
+  European Parliament (2025). \emph{Cyber Resilience Act -- Final Text}.
+\item
+  EBA (2024). \emph{ICT Risk Management under DORA}.
+\item
+  Grafana Labs (2025). \emph{Best Practices for KPI Dashboards}.
+\end{enumerate}
+
+\section{16 Reference Architectures \&
+Tooling}\label{reference-architectures-tooling}
+
+\begin{quote}
+\textbf{Purpose of this chapter} -- provide opinionated, EU‑aligned
+reference architectures that engineering teams can adopt or adapt when
+implementing PAREK migrations. Each pattern embraces open‑source
+baselines, indicates where commercial substitutes may slot in, and
+highlights regulatory hooks (NIS\,2, DORA, CRA, eIDAS~2).
+\end{quote}
+
+\subsection{16.1 Reading guide
+(≈\,80\,words)}\label{reading-guide-80-words}
+
+Each subsection presents:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Context} -- why the pattern matters.
+\item
+  \textbf{Diagram} -- ASCII or UML sketch.
+\item
+  \textbf{Component list} -- open‑source baseline + commercial
+  alternatives.
+\item
+  \textbf{EU compliance notes} -- which articles/standards the pattern
+  satisfies.
+\item
+  \textbf{Implementation tips} -- common pitfalls, performance notes.
+\end{enumerate}
+
+Full Terraform or Helm charts live in \texttt{assets/infra/}.
+
+\subsection{\texorpdfstring{16.2 PQ‑ready PKI
+(\emph{Pattern~RA‑PKI‑EU})}{16.2 PQ‑ready PKI (Pattern~RA‑PKI‑EU)}}\label{pqready-pki-pattern-rapkieu}
+
+\subsubsection{16.2.1 Context}\label{context}
+
+Most TLS, code‑signing and device‑auth chains depend on a X.509
+hierarchy. Upgrading to hybrid or PQ‑only certificates without forklift
+replacements requires a crypto‑agile PKI.
+
+\subsubsection{16.2.2 Diagram}\label{diagram}
+
+\begin{verbatim}
+               EU Trust List (EUTL)
+                      │
+        ┌─────────────┴─────────────┐
+        │        OFFLINE ROOT       │  (RSA‑4096 + Dilithium5)
+        └──────┬──────────┬─────────┘
+               │          │
+        ┌──────┴───┐  ┌───┴────┐
+        │  ISSUING │  │ ISSUING│   (ML‑DSA‑2, RSA‑4096)
+        │   CA‑A   │  │  CA‑B  │
+        └──┬───┬───┘  └───┬───┬─┘
+           │   │         │   │
+       ┌───┴─┐ └─┐   ┌───┴─┐ └─┐
+       │ TLS │  IoT  │Code │  VPN  (leafs: hybrid certs)
+\end{verbatim}
+
+\subsubsection{16.2.3 Components}\label{components}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1270}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3651}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5079}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Function
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Open‑source
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Commercial
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+CA core & EJBCA CE & Entrust PKIaaS EU \\
+HSM & SoftHSM + PKCS\#11 & Thales Luna HSM7 (EU datacentre) \\
+ACME & \texttt{certbot} (OQS‑patched) & Sectigo Certificate Manager \\
+\end{longtable}
+
+\subsubsection{16.2.4 EU compliance}\label{eu-compliance}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{eIDAS~2} QES requirements → Offline root must be hosted in EU
+  + QTSP audit.
+\item
+  \textbf{NIS\,2 Art.\,21} technical controls → dual control on root key
+  ceremonies.
+\end{itemize}
+
+\subsubsection{16.2.5 Implementation tips}\label{implementation-tips}
+
+\begin{itemize}
+\tightlist
+\item
+  Use \textbf{nested signatures}: RSA‑4096 outer, Dilithium5 inner to
+  satisfy legacy clients.
+\item
+  Test OCSP responders for 4\,kB cert sizes.
+\end{itemize}
+
+\subsection{\texorpdfstring{16.3 Hybrid TLS termination
+(\emph{RA‑TLS‑HYB})}{16.3 Hybrid TLS termination (RA‑TLS‑HYB)}}\label{hybrid-tls-termination-ratlshyb}
+
+\subsubsection{Context}\label{context-1}
+
+Web/API gateways must negotiate Kyber + X25519 KEM yet preserve
+performance.
+
+\subsubsection{Diagram}\label{diagram-1}
+
+\begin{verbatim}
+Users ──► Cloudflare Zaraz (TLS 1.3) ─► Envoy Edge ─► Service Mesh ─► App Pods
+            │ Kyber768+X25519           │ Kyber768+X25519     │ mTLS (OQS‑gRPC)
+\end{verbatim}
+
+\subsubsection{Components}\label{components-1}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Layer & OSS baseline & Commercial EU‑hosted \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+CDN & Cloudflare beta PQC edge & Akamai Secure Edge PQC \\
+Proxy & Envoy 1.31 + OQS‑BoringSSL & NGINX~Plus FIPS‑PQC module \\
+mTLS & OQS‑gRPC & Istio with Thales DataShield \\
+\end{longtable}
+
+\subsubsection{EU notes}\label{eu-notes}
+
+\begin{itemize}
+\tightlist
+\item
+  CRA requires ``state‑of‑the‑art'' crypto → hybrid by 2026 meets
+  ``state‑of‑the‑art'' definition.
+\item
+  GDPR Art.\,32 encryption → document cipher suite in RoPA.
+\end{itemize}
+
+\subsubsection{Tips}\label{tips}
+
+\begin{itemize}
+\tightlist
+\item
+  Enable \textbf{GREASE} support to avoid middlebox drops.
+\item
+  Capture baseline latency; expect +2‑5\,ms at 1\,kB handshake growth.
+\end{itemize}
+
+\subsection{\texorpdfstring{16.4 Secure code‑signing pipeline
+(\emph{RA‑CODE‑SIGN})}{16.4 Secure code‑signing pipeline (RA‑CODE‑SIGN)}}\label{secure-codesigning-pipeline-racodesign}
+
+\subsubsection{Diagram}\label{diagram-2}
+
+\begin{verbatim}
+Git Commit ─► CI Build ─► Cosign Sign (Dilithium2) ─► Rekor Transparency Log ─► Artifactory
+\end{verbatim}
+
+\subsubsection{Components}\label{components-2}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0909}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5606}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3485}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Step
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Tool (OSS)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Alt (Commercial)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Sign & \texttt{sigstore/cosign\ -\/-key\ dilithium.key} & Venafi
+CodeSign Protect \\
+Log & \texttt{sigstore/rekor} EU cluster & Ledger EU Notary \\
+Verify & \texttt{cosign\ verify\ -\/-key\ dilithium.pub} & Jenkins PQC
+plugin \\
+\end{longtable}
+
+\subsubsection{EU alignment}\label{eu-alignment}
+
+\begin{itemize}
+\tightlist
+\item
+  CRA mandates SBOM/CVEs disclosure → attach CBOM + SBOM via Sigstore
+  DSSE.
+\item
+  DORA ICT ‑ data integrity → use Transparency Log proofs.
+\end{itemize}
+
+\subsection{\texorpdfstring{16.5 CBOM ingestion \& graph
+(\emph{RA‑CBOM‑EU})}{16.5 CBOM ingestion \& graph (RA‑CBOM‑EU)}}\label{cbom-ingestion-graph-racbomeu}
+
+\subsubsection{Diagram}\label{diagram-3}
+
+\begin{verbatim}
+Supplier CBOM JSON ─► API Gateway (OAuth) ─► Kafka topic `cbom.raw`
+        │                                   │
+        └───────── error queue ─────────────┘
+                   │
+             ETL (Rust Lambda) ─► Neo4j GraphDB ─► Grafana Dash
+\end{verbatim}
+
+\subsubsection{Components}\label{components-3}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Function & OSS & Commercial \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Gateway & Kong Gateway & Azure APIM EU \\
+Queue & Kafka & AWS MSK (eu‑west‑1) \\
+Graph & Neo4j Community & Amazon Neptune \\
+\end{longtable}
+
+\subsubsection{EU notes}\label{eu-notes-1}
+
+\begin{itemize}
+\tightlist
+\item
+  Store all supplier data within EEA to satisfy GDPR Art.\,44.
+\end{itemize}
+
+\subsection{\texorpdfstring{16.6 Crypto‑agile secret management
+(\emph{RA‑SECRETS})}{16.6 Crypto‑agile secret management (RA‑SECRETS)}}\label{cryptoagile-secret-management-rasecrets}
+
+\subsubsection{Diagram}\label{diagram-4}
+
+\begin{verbatim}
+Apps ► HashiCorp Vault (Transit Engine PQC plugin) ► HSM partition (ML‑KEM)
+\end{verbatim}
+
+\subsubsection{Implementation tips}\label{implementation-tips-1}
+
+\begin{itemize}
+\tightlist
+\item
+  Use \textbf{Key Versioning} to rotate to future algorithms (e.g.,
+  ML‑KEM‑1024).
+\item
+  Enable \textbf{Key Type Tags} to block RSA key generation post‑2030.
+\end{itemize}
+
+\subsection{16.7 Mapping architectures to PAREK
+stages}\label{mapping-architectures-to-parek-stages}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Stage & Primary reference pattern & Artefacts produced \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{P} & RA‑CBOM‑EU & CBOM graph export \\
+\textbf{A} & (N/A) -- consumes CBOM & Risk registry \\
+\textbf{R} & Integration of RA‑PKI‑EU & Roadmap epics \\
+\textbf{E} & RA‑TLS‑HYB, RA‑CODE‑SIGN & Run‑books, metrics \\
+\textbf{K} & RA‑SECRETS, monitoring stack & KPI dashboards \\
+\end{longtable}
+
+\subsection{16.8 EU compliance cross‑reference
+(summary)}\label{eu-compliance-crossreference-summary}
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+Pattern & NIS~2 & DORA & CRA & eIDAS~2 & GDPR \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+RA‑PKI‑EU & ✔ & --- & --- & ✔ & --- \\
+RA‑TLS‑HYB & ✔ & ✔ & ✔ & --- & ✔ \\
+RA‑CODE‑SIGN & ✔ & ✔ & ✔ & ✔ & --- \\
+RA‑CBOM‑EU & ✔ & ✔ & ✔ & --- & ✔ \\
+RA‑SECRETS & ✔ & ✔ & --- & --- & ✔ \\
+\end{longtable}
+
+Full mapping sheet lives in
+\texttt{assets/compliance/patterns‑eu‑matrix.xlsx}.
+
+\subsection{16.9 Next steps}\label{next-steps-3}
+
+\begin{itemize}
+\tightlist
+\item
+  Pilot \textbf{RA‑TLS‑HYB} on staging APIs (Q4~2025).
+\item
+  Migrate code‑signing pipeline to Dilithium2 by Q1~2026.
+\item
+  Integrate CBOM graph with risk dashboard (Stage\,K KPI P‑1) before
+  next NIS~2 audit.
+\end{itemize}
+
+\subsection{16.10 References}\label{references-7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ETSI (2024). \emph{TS~119~996 -- Algorithm Agility Principles}.
+\item
+  Sigstore (2025). \emph{PQC Roadmap}.
+\item
+  ENISA (2025). \emph{Architecture Patterns for Post‑Quantum Migration}.
+\item
+  Cloudflare (2025). \emph{Hybrid KEM Performance Whitepaper}.
+\item
+  CEN/CENELEC (2025). \emph{Guideline on PQC‑Ready PKIs}.
+\end{enumerate}
+
+\section{17 Glossary \& Acronyms (CEN/CENELEC \&
+ISO‑aligned)}\label{glossary-acronyms-cencenelec-isoaligned}
+
+\begin{quote}
+\textbf{Purpose} -- harmonise terminology across the handbook and
+supplier communications. Definitions derive, where possible, from
+authoritative European standards: \textbf{CEN/CENELEC Guide~30:2015}
+(\emph{European~Standardisation -- Vocabulary}), \textbf{EN~ISO/IEC
+2382} (\emph{Information technology~-- Vocabulary}) and
+\textbf{ETSI~TR~103~684} (\emph{Algorithm Agility and Post‑Quantum
+Cryptography}). Where no official wording exists, the editorial team
+supplies a consensual definition.
+\end{quote}
+
+\emph{Abbreviations are ordered alphabetically; initialisms are
+uppercase, terms are in Title Case.}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2857}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7143}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Term / Acronym
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Definition (EU standard reference)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{AES} -- Advanced Encryption Standard & Symmetric block cipher
+standardised in ISO/IEC~18033‑3. \\
+\textbf{Algorithm Agility} & Ability of a system to support, select and
+switch between multiple cryptographic algorithms with minimal impact
+(ETSI~TR~103~684). \\
+\textbf{CBOM} -- Cryptography Bill of Materials & Machine‑readable
+inventory of algorithms, keys, certificates and crypto modules contained
+in a product; extension to CycloneDX v1.6 (CEN/CENELEC draft
+prEN~17720). \\
+\textbf{CEN} -- Comité Européen de Normalisation & European Committee
+for Standardization responsible for non‑electrotechnical standards. \\
+\textbf{CENELEC} -- Comité Européen de Normalisation Électrotechnique &
+European Committee for Electrotechnical Standardization. \\
+\textbf{CRQC} -- Cryptographically Relevant Quantum Computer & Quantum
+computer capable of performing Shor‑style attacks on RSA/ECC keys of
+practical length (EN~ISO/IEC~2382‑37 draft). \\
+\textbf{CRA} -- Cyber Resilience Act & EU regulation proposal on
+cyber‑secured products (COM/2022/454). \\
+\textbf{CVSS} -- Common Vulnerability Scoring System & Industry standard
+for rating IT vulnerabilities (ISO/IEC~30111). \\
+\textbf{Dilithium} & Lattice‑based digital‑signature scheme selected by
+NIST for standardisation (FIPS~204). \\
+\textbf{DORA} -- Digital Operational Resilience Act & EU regulation
+2022/2554 on ICT risk management for the financial sector. \\
+\textbf{DSSE} -- Delegated Supply‑chain Signing Envelope & JSON envelope
+format binding artefact digests and signature metadata (IETF draft). \\
+\textbf{ENISA} -- European Union Agency for Cybersecurity & EU agency
+providing guidance on cybersecurity and cryptography. \\
+\textbf{eIDAS~2} & Regulation (EU)~2024/126 on digital identity and
+trust services. \\
+\textbf{ETSI} -- European Telecommunications Standards Institute &
+Standards body producing ICT technical specs (e.g., ETSI~TS~119~996 on
+algorithm agility). \\
+\textbf{FAL} -- Forbidden Algorithm List & Organisational list banning
+weak or deprecated algorithms (internal policy; reference CRA
+Art~23). \\
+\textbf{FIPS} -- Federal Information Processing Standard & U.S.
+Government cryptography standards (e.g., FIPS~203~ML‑KEM). \\
+\textbf{HNDL} -- Harvest‑Now‑Decrypt‑Later & Attack model where
+adversary stores encrypted data today to decrypt after CRQC becomes
+available (CEN/CENELEC use case). \\
+\textbf{HSM} -- Hardware Security Module & Physical device safeguarding
+cryptographic keys and operations (ISO/IEC~19790). \\
+\textbf{Hybrid Key Exchange} & Protocol combining classical and
+post‑quantum Key Encapsulation Mechanisms (KEMs) to derive a shared
+secret (IETF~RFC~9399). \\
+\textbf{ISO} -- International Organization for Standardization & Global
+standardisation body collaborating with IEC on IT. \\
+\textbf{Key Governance} & Processes and controls ensuring lifecycle
+management of cryptographic keys (EN~ISO/IEC~27002:2022, 10.10). \\
+\textbf{Kyber / ML‑KEM} & Module‑lattice KEM selected by NIST
+(FIPS~203). \\
+\textbf{MTTR‑C} -- Mean Time to Remediate Crypto & Average time to
+replace or fix weak cryptography after detection (DORA ICT RTS
+draft). \\
+\textbf{NIS~2} & Directive (EU)~2022/2555 on measures for a high common
+level of cybersecurity across the Union. \\
+\textbf{OCSP} -- Online Certificate Status Protocol & Internet X.509
+revocation protocol (IETF~RFC~6960). \\
+\textbf{PAREK} & Five‑stage EU PQC transition framework:
+\textbf{P}‑Inventory, \textbf{A}‑Risk Assessment,
+\textbf{R}‑Road‑mapping, \textbf{E}‑Execution, \textbf{K}‑Governance. \\
+\textbf{PQC} -- Post‑Quantum Cryptography & Cryptographic primitives
+believed secure against quantum adversaries (ISO/IEC~2382‑37 draft
+term). \\
+\textbf{QACKER} -- Quantum Hacker & Community-driven portal tracking
+quantum exploits and proof‑of‑concept attacks on classical cryptography
+(\url{https://www.qacker.com}). \\
+\textbf{QARS} -- Quantum‑Adjusted Risk Score & Composite metric
+weighting shelf‑life, migration effort and threat horizon. \\
+\textbf{QTSP} -- Qualified Trust Service Provider & Entity providing
+qualified trust services under eIDAS~2. \\
+\textbf{RSA} & Public‑key cryptosystem based on integer factorisation
+(ISO/IEC~14888‑2). \\
+\textbf{SBOM} -- Software Bill of Materials & List of software
+components in a product (ISO/IEC~5962:2021 -- SPDX). \\
+\textbf{SCB} -- Supplier Cryptography Board & Governance forum reviewing
+supplier PQC readiness (§13). \\
+\textbf{Shor's Algorithm} & Quantum algorithm for factoring and discrete
+logarithms (ISO/IEC~2382‑37 ref). \\
+\textbf{SPHINCS+} & Stateless hash‑based signature scheme selected by
+NIST (FIPS~205). \\
+\textbf{TLS~1.3} & Transport Layer Security protocol version 1.3
+(IETF~RFC~8446). \\
+\textbf{X.509 Certificate} & Public‑key certificate standard
+(ITU‑T~X.509; also ISO/IEC\,9594‑8). \\
+\end{longtable}
+
+\subsection{Notes on usage}\label{notes-on-usage}
+
+\begin{itemize}
+\tightlist
+\item
+  Where CEN/CENELEC or ISO vocabulary provides an exact wording, that
+  phrasing is preferred verbatim.
+\item
+  Internal policy acronyms (e.g., QARS, SCB) are capitalised to signal
+  organisational scope.
+\item
+  Terms introduced by NIST but not yet in ISO (e.g., ML‑KEM) keep NIST
+  naming with cross‑reference to pending ISO work items.
+\end{itemize}
+
+\section{18 Templates, Check‑lists \& Sample
+Artefacts}\label{templates-checklists-sample-artefacts}
+
+\begin{quote}
+\textbf{Purpose}~-- catalogue the ready‑to‑use artefacts that accelerate
+PAREK implementation: spreadsheets, questionnaires, run‑books and
+document stubs. All templates live under the repository's
+\textbf{\texttt{assets/templates/}} folder so teams can clone or
+download them directly.
+\end{quote}
+
+\emph{The table lists each template, its intended use, recommended
+format and repository path.}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0652}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3261}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1957}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1739}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2391}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Template name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Format
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Repo path
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & \textbf{CBOM JSON Schema} & Validate supplier cryptography bills of
+materials against CycloneDX extension & \texttt{.json} &
+\texttt{assets/templates/cbom-schema/pqcbom-1.6.json} \\
+2 & \textbf{Asset Inventory Spreadsheet} & Manual fallback sheet for
+systems where automated scanning is not feasible & \texttt{.xlsx} &
+\texttt{assets/templates/inventory/inventory‑baseline.xlsx} \\
+3 & \textbf{Risk Calculator Notebook} & Jupyter notebook implementing
+QARS formula with sample data & \texttt{.ipynb} &
+\texttt{assets/templates/risk/qars\_calc.ipynb} \\
+4 & \textbf{Supplier Questionnaire (Q‑PQC‑001)} & Collect vendor crypto
+posture \& roadmap (Tier~1/2) & \texttt{.docx} &
+\texttt{assets/templates/supplier/q‑pqc‑001.docx} \\
+5 & \textbf{PQC Contract Annex} & Standard legal clause bundle
+(CRA‑ready) & \texttt{.docx} &
+\texttt{assets/templates/contracts/pqc‑annex.docx} \\
+6 & \textbf{Migration Run‑book Stub} & Markdown skeleton for Stage~E
+deployments & \texttt{.md} &
+\texttt{assets/templates/execution/migration\_runbook.md} \\
+7 & \textbf{Rollback Playbook} & Script + checklist for emergency cipher
+rollback & \texttt{.sh} + \texttt{.md} &
+\texttt{assets/templates/execution/rollback/} \\
+8 & \textbf{KPI Dashboard JSON} & Grafana import for executive KPI panel
+& \texttt{.json} & \texttt{assets/templates/kpi/kpi\_dashboard.json} \\
+9 & \textbf{Incident Report Form (ENISA style)} & 72‑hour notification
+template for NIS~2 major incidents & \texttt{.docx} &
+\texttt{assets/templates/incidents/nis2\_incident\_form.docx} \\
+10 & \textbf{Lessons‑Learned Retrospective Deck} & Slide deck for
+post‑migration review meetings & \texttt{.pptx} &
+\texttt{assets/templates/lessons/retro\_template.pptx} \\
+\end{longtable}
+
+\subsubsection{How to use}\label{how-to-use}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Download or clone} the required file from the path above.
+\item
+  \textbf{Fill in the yellow‑highlighted fields} -- those are mandatory
+  for audit.
+\item
+  \textbf{Version‑control} completed artefacts in your project folder
+  (\texttt{/project/\textless{}work‑package\textgreater{}/docs/}).
+\item
+  \textbf{Submit} via pull request or the SharePoint drop‑off library as
+  instructed in §10 or §12.
+\end{enumerate}
+
+\subsubsection{\texorpdfstring{Planned additions
+\emph{(placeholder)}}{Planned additions (placeholder)}}\label{planned-additions-placeholder}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Template & ETA & Owner \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+KPI auto‑emailer script & Q1~2026 & CGO‑DevOps \\
+CBOM→Neo4j import Lambda & Q2~2026 & DevOps‑Infra \\
+\end{longtable}
+
+\section{19 Appendices -- Supporting Artefacts \& Deep‑Dive
+Material}\label{appendices-supporting-artefacts-deepdive-material}
+
+\begin{quote}
+\textbf{Purpose} -- enumerate and briefly describe the supplementary
+artefacts that provide extra depth, raw data or worked examples
+referenced throughout the handbook. Each appendix lives either as a
+standalone Markdown/PDF in \texttt{assets/appendix/} or as an embedded
+section below.
+\end{quote}
+
+\subsection{Suggested Appendix
+Catalogue}\label{suggested-appendix-catalogue}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0385}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5096}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2692}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1827}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Working Title
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Intended Content (summary)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Format \& Location
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{A} & Algorithm \& Parameter Cheat‑Sheets & One‑page tables for
+ML‑KEM, ML‑DSA, SPHINCS+ parameters (security level, key sizes,
+cipher‑suite IDs). Useful for architects and auditors. &
+\texttt{assets/appendix/A-algo-cheatsheet.pdf} \\
+\textbf{B} & CRQC Scenario Planning Worksheets & Excel model pre‑loaded
+with Fast/Baseline/Delayed threat horizons (§9.7) and Monte Carlo
+templates for budget impacts. &
+\texttt{assets/appendix/B-scenario-worksheets.xlsx} \\
+\textbf{C} & EU Regulatory Mapping Matrix & Pivot table mapping handbook
+sections, KPIs and reference architectures to NIS~2, DORA, CRA, eIDAS~2
+articles. & \texttt{assets/appendix/C-eu-reg-matrix.xlsx} \\
+\textbf{D} & Sample CBOM \& Validation Report & Example Tier‑1 supplier
+CBOM JSON, DSSE signature, and automated validation output. &
+\texttt{assets/appendix/D-sample-cbom/} \\
+\textbf{E} & Q-PQC-001 Supplier Questionnaire & Blank and filled‑in
+versions demonstrating expected depth of answers. &
+\texttt{assets/appendix/E-supplier-questionnaire.docx} \\
+\textbf{F} & KPI Dictionary & Extended definitions, formulas and
+SQL/Grafana queries for every KPI in §15. &
+\texttt{assets/appendix/F-kpi-dictionary.md} \\
+\textbf{G} & Risk Formula Reference & Derivation of QARS weights,
+academic citations, sensitivity analysis plots. &
+\texttt{assets/appendix/G-qars-formula.pdf} \\
+\textbf{H} & Contract Annex Boilerplate & Full text of the PQC Annex
+with tracked‑changes commentary and CRA cross‑references. &
+\texttt{assets/appendix/H-pqc-annex.docx} \\
+\textbf{I} & Training Matrix \& Syllabi & Detailed curricula, slide
+decks and lab guides for Dev‑Ops, IT~Ops and Risk roles. &
+\texttt{assets/appendix/I-training-matrix/} \\
+\textbf{J} & Tool Installation Scripts & Bash/PowerShell scripts to
+deploy reference stack (OQS‑OpenSSL, Envoy, Neo4j). &
+\texttt{assets/appendix/J-tool-scripts/} \\
+\end{longtable}
+
+Feel free to re‑letter or reorder appendices as the handbook matures;
+maintain unique IDs for citation stability.
+
+\subsection{Next‑step actions}\label{nextstep-actions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Content owners} -- populate each appendix folder/file before
+  handbook v1.0 freeze (target Q1~2026).
+\item
+  \textbf{Editorial review} -- ensure consistency with glossary and
+  policy stack.
+\item
+  \textbf{Linking} -- update in‑text references (e.g., ``see
+  Appendix~C'') as each appendix finalises.
+\end{enumerate}
+
+% Footer note or appendix
+\newpage
+\thispagestyle{empty}
+\vfill
+\begin{center}
+  \textit{This document was generated using the PAREK open framework.}
+\end{center}
+
+\end{document}
